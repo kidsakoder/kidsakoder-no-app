@@ -1,0 +1,3 @@
+[submodule "enonic-server"]
+	path = enonic-server
+	url = https://github.com/kidsakoder/kidsakoder-no-container.git
