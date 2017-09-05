@@ -1,0 +1,14 @@
+#!/bin/bash
+# Fixes IntelliJ IDEA's inability to pass the default PATH from Gradle scripts
+PATH=/usr/bin:/usr/local/bin:$PATH
+
+echo "Executing Enonic XP utility script"
+
+SCRIPTFILE="./scripts/$1.sh"
+
+if [ -f $SCRIPTFILE ];
+then
+  $SCRIPTFILE "${@:2}"
+else
+  echo "Unknown command $1"
+fi

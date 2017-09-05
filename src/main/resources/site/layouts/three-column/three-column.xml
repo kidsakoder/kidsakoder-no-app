@@ -1,0 +1,9 @@
+<layout>
+  <display-name>Three column</display-name>
+  <config/>
+  <regions>
+    <region name="left"/>
+    <region name="middle"/>
+    <region name="right"/>
+  </regions>
+</layout>

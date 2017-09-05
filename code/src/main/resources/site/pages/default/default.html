@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Lær Kidsa Koding</title>
+    </head>
+    <body data-portal-component-type="page">
+        <header class="lkk-header">
+            <div class="lkk-header-inner">
+                <a class="lkk-logo" href="https://kidsakoder.no/" title="Lær Kidsa Koding!" rel="home">
+                    <img src="https://1hzoda29f77r1yh9c33lm1ae-wpengine.netdna-ssl.com/wp-content/uploads/2015/02/LKK_small.png" alt="Lær Kidsa Koding" />
+                </a>
+                <nav class="lkk-nav">
+                    <a class="lkk-nav-item" href="https://kidsakoder.no/om-lkk/">Om LKK</a>
+                    <a class="lkk-nav-item" href="https://kidsakoder.no/nyheter/">Nyheter</a>
+                    <a class="lkk-nav-item" href="https://kodeklubben.github.io">Oppgaver</a>
+                    <a class="lkk-nav-item" href="https://forum.kidsakoder.no">Forum</a>
+                    <a class="lkk-nav-item" href="https://kidsakoder.no/kodeklubben/">Kodeklubber</a>
+                    <a class="lkk-nav-item" href="https://kidsakoder.no/skole/">Skole</a>
+                    <a class="lkk-nav-item" href="https://kidsakoder.no/kodetimen/">Kodetimen</a>
+                    <a class="lkk-nav-item" href="https://kidsakoder.no/bidra/">Bidra?</a>
+                </nav>
+            </div>
+        </header>
+       <main data-portal-region="main">
+           <div data-th-if="${mainRegion}" data-th-each="component : ${mainRegion.components}" data-th-remove="tag">
+                <div data-portal-component="${component.path}" data-th-remove="tag"></div>
+            </div>
+       </main>
+       <footer>
+
+       </footer>
+    </body>
+</html>

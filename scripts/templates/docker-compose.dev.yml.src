@@ -1,0 +1,6 @@
+exp:
+  container_name: {{PROJECTNAME}}
+  volumes:
+    - ./exp/deploy:/enonic-xp/home/deploy
+    - {{CODEDIR}}:{{CODEDIR}}
+  command: /launcher.sh dev
