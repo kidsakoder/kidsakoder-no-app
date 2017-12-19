@@ -26,9 +26,6 @@ app {
     displayName = project.displayName
     vendorName = project.vendorName
     vendorUrl = project.vendorUrl
-
-    // Point xpHome to docker container so deploy knows where to put the jar.
-    xpHome = new File("../enonic-server/exp/")
 }
 
 sourceSets {
