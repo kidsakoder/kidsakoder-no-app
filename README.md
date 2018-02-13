@@ -1,63 +1,32 @@
-# Enonic XP Vanilla Starter
-Velkommen til Enonic XP. Dette repoet inneholder kildekode og byggeskripter for å bygge og deploye en jar-fil som kan lastes inn i Enonic XP.  
+# Kidsakoder.no
 
-## Mappestruktur
-Vi anbefaler en mappestruktur for utvikling som er slik:
+Kidsakoder.no is based on the [Enonic XP platform](http://xp.readthedocs.io/en/stable/).
 
-```
-dev
-    software
-        enonic
-            enonic-xp-x.x.x
-    code
-        myapp
-    xp-homes
-        delta
-            home
-```
+# Installation requirements
+To run this site locally, you will have to install [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/).
 
-Dette repoet klones inn i ~/dev/code.
+[git](https://git-scm.com/) is also required, for setup of and contributing to this project.
 
-## Installere Enonic XP
-Last ned [siste versjon](https://enonic.com/try-now#download-now) og pakk ut zip-filen i ~/dev/software/enonic.
+# Installation
+There are predefined scripts for initializing, running the Enonic Server and deploying this site as an Enonic XP app locally. These scripts require a unix shell. Please refer to the official [Docker documentation for Enonic XP](http://xp.readthedocs.io/en/stable/getstarted/docker.html) for installing these containers without using these scripts.
 
-## Java
-Enonic XP krever [Java 8 JDK eller JRE](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) installert. JAVA_HOME må være definert korrekt. For OSX vil dette normalt være /Library/Java/JavaVirtualMachines/jdk1.8.x_xx.jdk/Contents/Home
+## Linux
+Just use your terminal and distro of choice.
 
-## XP_HOME
-Enonic XP trenger at vi spesifiserer hvilken mappe som er "home"-mappen. Dette leses fra miljøvariabelen XP_HOME, eller defineres i build.gradle. Hvis du følger anbefalingen for filstruktur vil dette allerede være definert i build.gradle for deg.
+## Mac
+[iTerm2](https://www.iterm2.com/) is recommended for Mac, but the default terminal works just as fine for running this project.
 
-## Bygge pakken
-Vi bruker Gradle til byggverktøy. Gradle kan kjøres direkte fra kommandolinjen eller fra IntelliJ (eller annet IDE)
+## Windows
+It is recommended to install a unix-like shell for Windows, e.g. [Cygwin](https://cygwin.com/install.html) or [Babun](http://babun.github.io/) (Babun is pre-configured Cygwin with additional packages).
 
-### Bygge fra kommandolinje
-Bygg og deploy med default gradle wrapper:
-> ~/dev/code/delta/gradlew deploy
+# Setup
+- Start Docker
+- Open your shell and do the following steps:
+    1. Navigate to the root folder for this project
+    2. Initialize: ```sh scripts/init.sh```
+    3. Start the server: ```sh scripts/run.sh```
+    4. Deploy / redeploy the kidsakoder.no app ```sh scripts/redeploy.sh```
 
-Dette bygger .jar-filen og kopierer den deploy-mappen under $XP_HOME.
-
-## Starte serveren
-Når pakken er deployet kan du starte serveren. Serveren kan startes direkte fra gradle:
-> gradlew startserver
-
-Serveren vil være tilgjengelig på localhost:8080.
-
-### VHOST
-Legg dette inn i `~/dev/xp-homes/<myapp>/home/config/com.enonic.xp.web.vhost.cfg`
-
-```
-enabled = true
-
-mapping.delta.host = localhost
-mapping.delta.source = /
-mapping.delta.target = /portal/master/<navnet på rotmappen i Content Studio>
-
-mapping.admin.host = localhost
-mapping.admin.source = /admin
-mapping.admin.target = /admin
-```
-
-# Logger
-Loggen er tilgjengelig i ~dev/software/enonic/logs/enonic-xp-x.x.x.log
-
-Loggen blir tømt ved omstart av løsningen.
+Rerun step 4 to apply changes in the kidsakoder.no app, and run the following to apply changes to the server or docker config:
+1. Stop the server: ```sh scripts/stop.sh```
+2. Restart the server: ```sh scripts/run.sh```
