@@ -23,10 +23,10 @@ It is recommended to install a unix-like shell for Windows, e.g. [Cygwin](https:
 - Start Docker
 - Open your shell and do the following steps:
     1. Navigate to the root folder for this project
-    2. Initialize: ```sh scripts/init.sh```
-    3. Start the server: ```sh scripts/run.sh```
-    4. Deploy / redeploy the kidsakoder.no app ```sh scripts/redeploy.sh```
+    2. Initialize: ```./scripts/init.sh```
+    3. Start the server: ```./scripts/run.sh```
+    4. Deploy / redeploy the kidsakoder.no app ```./scripts/redeploy.sh```
 
 Rerun step 4 to apply changes in the kidsakoder.no app, and run the following to apply changes to the server or docker config:
-1. Stop the server: ```sh scripts/stop.sh```
-2. Restart the server: ```sh scripts/run.sh```
+1. Stop the server: ```./scripts/stop.sh```
+2. Restart the server: ```./scripts/run.sh```
