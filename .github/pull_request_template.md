@@ -13,9 +13,7 @@ Fix #
 
 ## Approach / Description of changes
 <!--How does this change/fix the problem?-->
-
-## Screenshot(s) if appropriate
-<!-- provide screenshots (before and after) if doing design changes -->
+<!--Provide screenshots (before and after) if doing design changes.-->
 
 ## Code Checklist
 - [ ] Work in progress <!--If the code is not ready to merge.-->
