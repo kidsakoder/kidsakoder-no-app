@@ -1,5 +1,8 @@
 ### Description
 describe the pull request
 
-### General Info
-Link to issue #
+### Checklist
+- [ ] Link to issue it fixes
+- [ ] Add someone for review
+- [ ] Add screenshot if design was changed
+- [ ] The files and code follows the conventions
