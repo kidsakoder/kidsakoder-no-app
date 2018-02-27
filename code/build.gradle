@@ -1,149 +1,92 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        jcenter()
-        maven {
-            url "http://repo.enonic.com/public"
-        }
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-
-    dependencies {
-        classpath "com.enonic.xp:gradle-plugin:${xpVersion}"
-        classpath "com.moowork.gradle:gradle-node-plugin:0.11"
-    }
+plugins {
+    id 'com.enonic.xp.app' version '1.0.17'
+    id 'com.moowork.node' version '1.2.0'
 }
-
-apply plugin: 'com.enonic.xp.app'
-apply plugin: 'com.moowork.node'
-
-def frontendDir = "./src/frontend/"
 
 app {
     name = project.appName
     displayName = project.displayName
     vendorName = project.vendorName
     vendorUrl = project.vendorUrl
+    systemVersion = "${xpVersion}"
 }
 
-sourceSets {
-    main {
-        resources {
-            srcDir 'site'
-        }
-    }
+node {
+    download = true
+    version = '8.9.4'
 }
-
-// ##
-// ## Application tasks
-// ##
-task deployFull {
-    mustRunAfter('npmBuild')
-    dependsOn('npmBuild')
-    dependsOn(':deploy')
-    group 'application'
-    description 'Builds and deploys entire application, including frontend npm build'
-}
-
-// ##
-// ## Enonic XP Server tasks
-// ##
-task startserver(group: 'enonic xp', type: Exec) {
-    workingDir "$projectDir/../"
-    commandLine 'sh', 'exp', 'run'
-}
-
-task stopserver(group: 'enonic xp', type: Exec) {
-    workingDir "$projectDir/../"
-    commandLine 'sh', 'exp', 'stop'
-}
-
-task redeploy(group: 'enonic xp', type: Exec) {
-    workingDir "$projectDir/../"
-    commandLine 'sh', 'exp', 'redeploy'
-}
-
-// ##
-// ## Frontend/npm tasks
-// ##
-task npmInstallDeps(type: NpmTask) {
-    args = ['install']
-    workingDir = frontendDir
-    group 'node'
-    description 'Install npm dependencies (package.json)'
-}
-
-task npmCleanDeps(group: 'node', description: 'Delete npm dependencies (**/node_modules/') << {
-    def nodeModulesDir = new File("$frontendDir/node_modules")
-    nodeModulesDir.deleteDir()
-}
-
-task npmCleanProject(type: NpmTask) {
-    args = ['run', 'clean']
-    workingDir = frontendDir
-    group 'node'
-    description 'Clean npm frontend project (package.json)'
-}
-
-task npmBuild(type: NpmTask) {
-    args = ['run', 'build']
-    workingDir = frontendDir
-    group 'node'
-    description 'Build npm frontend project (package.json)'
-    dependsOn npmInstallDeps
-}
-
-clean.dependsOn(npmCleanProject)
 
 dependencies {
     compile "com.enonic.xp:core-api:${xpVersion}"
     compile "com.enonic.xp:portal-api:${xpVersion}"
     include "com.enonic.xp:lib-content:${xpVersion}"
-    include "com.enonic.xp:lib-context:${xpVersion}"
     include "com.enonic.xp:lib-portal:${xpVersion}"
     include "com.enonic.xp:lib-thymeleaf:${xpVersion}"
-    include "com.enonic.xp:lib-http-client:${xpVersion}"
-    include "com.enonic.xp:lib-mail:${xpVersion}"
-    include "com.enonic.xp:lib-i18n:${xpVersion}"
-    include "com.enonic.xp:lib-auth:${xpVersion}"
-    include "com.enonic.xp:lib-cache:${xpVersion}"
-    include "com.enonic.lib:menu:1.2.0"
-    include "com.enonic.lib:util:1.1.2"
-    testCompile 'junit:junit:4.12'
+    include "com.enonic.xp:lib-io:${xpVersion}"
+    include "com.enonic.lib:lib-router:1.0.1"
+    //include "com.enonic.xp:lib-http-client:${xpVersion}"
+    //include "com.enonic.xp:lib-mail:${xpVersion}"
+    //include "com.enonic.xp:lib-i18n:${xpVersion}"
+    //include "com.enonic.xp:lib-auth:${xpVersion}"
+    //include "com.enonic.xp:lib-cache:${xpVersion}"
+    //include "com.enonic.lib:menu:1.2.0"
+    //include "com.enonic.lib:util:1.1.2"
+    testCompile "junit:junit:4.12"
 }
 
 repositories {
     mavenLocal()
     jcenter()
     maven {
-        url 'http://repo.enonic.com/public'
+        url "http://repo.enonic.com/public"
+    }
+    maven {
+        url "https://plugins.gradle.org/m2/"
     }
 }
 
-node {
-    // Version of node to use.
-    version = '4.2.3'
+// Task enabling es6 transpiling for Enonic
 
-    // Version of npm to use.
-    npmVersion = '2.14.7'
+task babel(type: NodeTask, dependsOn: 'npmInstall') {
+    script = file('node_modules/.bin/babel')
+    args = [
+        "-d",
+        "$buildDir/resources/main",
+        "-x",
+        ".es6",
+        "--presets",
+        "env",
+        "src/main/resources"
+    ]
 
-    // Base URL for fetching node distributions (change if you have a mirror).
-    //distBaseUrl = 'https://nodejs.org/dist'
+    if (project.hasProperty('watch')) {
+        args = ['-w'] + args
+    }
 
-    // If true, it will download node using above parameters.
-    // If false, it will try to use globally installed node.
-    download = true
-
-    // Set the work directory for unpacking node
-    //workDir = file("${project.buildDir}/nodejs")
-    //workDir = file("${project.projectDir}/src/resources/frontend/node_modules/nodejs/")
-
-    // Set the work directory where node_modules should be located
-    //nodeModulesDir = file("${project.projectDir}/src/resources/frontend/")
+    inputs.dir 'src/main/resources'
+    outputs.dir "$buildDir/resources/main"
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.9'
-}
+jar.dependsOn += babel
+
+// Task for compiling SCSS to CSS
+
+//task scss(type: NodeTask, dependsOn: 'npmInstall') {
+//    script = file('node_modules/webpack/bin/webpack.js')
+//
+//    if (project.hasProperty('watch')) {
+//        args = ['-w']
+//    }
+//}
+
+// Task for compiling React apps
+
+//task webpack(type: NodeTask, dependsOn: 'npmInstall') {
+//    script = file('node_modules/webpack/bin/webpack.js')
+//
+//    if (project.hasProperty('watch')) {
+//        args = ['-w']
+//    }
+//}
+//
+//jar.dependsOn += webpack
