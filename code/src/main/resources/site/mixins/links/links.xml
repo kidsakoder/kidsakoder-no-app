@@ -1,0 +1,40 @@
+<mixin>
+    <display-name>Links</display-name>
+    <items>
+		<option-set name="url">
+		  <label>Link</label>
+		  <expanded>true</expanded>
+		  <occurrences minimum="1" maximum="1"/>
+		  <help-text>Please select the type of link you wish to create. The first option is used for linking outside of your site, while the second one is for internal links.</help-text>
+		  <options minimum="1" maximum="1">
+			<option name="text">
+			  <label>External URL</label>
+			  <help-text>Add an URL to an external source. The URL should begin with "https" or "http". For example https://example.com.
+				  You can only use either "External URL" or "Link to a page". In case you fill both fields, "Link to a page" has priority.</help-text>
+			  <items>
+				<input name="url" type="TextLine">
+				  <label>Full URL (including 'http')</label>
+				  <occurrences minimum="1" maximum="1"/>
+				</input>
+			  </items>
+			</option>
+			<option name="content">
+			  <label>Link to another content</label>
+			  <default>true</default>
+			  <help-text>Select a page that you have already made and want the button to point to.
+				  You can only use either "External URL" or "Link to a page". In case you fill both fields, "Link to a page" has priority.</help-text>
+			  <items>
+				<input name="key" type="ContentSelector">
+				  <label>Select page</label>
+				  <occurrences minimum="1" maximum="1"/>
+				  <config>
+					<allowContentType>landing-page</allowContentType>
+					<allowPath>${site}/*</allowPath>
+				  </config>
+				</input>
+			  </items>
+			</option>
+		  </options>
+		</option-set>
+	</items>
+</mixin>

@@ -1,6 +1,5 @@
 .lkk-main-button {
   font-family: 'Source Code Pro', monospace;
-
 }
 .img-container {
   display: flex;
@@ -35,4 +34,18 @@
   font-size: 2.1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 48em) {
+  .lkk-main-button {
+    margin: 10px;
+  }
+  .img-container {
+    display: none;
+  }
+}
+@media only screen and (min-width: 48em) {
+  .lkk-main-button {
+    padding: 30px;
+  }
 }
