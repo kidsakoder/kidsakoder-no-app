@@ -7,6 +7,7 @@
  *    IE on Windows Phone and in iOS.
  */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700);
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro');
 html {
   line-height: 1.15;
   /* 1 */
@@ -490,4 +491,3 @@ template {
 .lkk-news__title:hover:before, .lkk-news__title:focus:before, .lkk-news__title:active:before {
   -webkit-transform: scaleX(1);
   transform: scaleX(1); }
-

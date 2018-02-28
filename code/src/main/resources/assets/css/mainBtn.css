@@ -1,0 +1,38 @@
+.lkk-main-button {
+  font-family: 'Source Code Pro', monospace;
+
+}
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+.img-main-btn {
+  width: 50%;
+}
+.btn-container {
+  text-align: center;
+  border-radius: 12pt;
+  background-color: #E5E5E5;
+  color: #4D4D4D;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 6px 6px #4D4D4D;
+}
+.btn-container:hover {
+  box-shadow: 0px 0px;
+}
+.btn-container:active {
+  box-shadow: 0px 0px;
+  color: #5CFF5C;
+  background-color: #4D4D4D;
+}
+
+.title-main-btn {
+  font-size: 2.1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
