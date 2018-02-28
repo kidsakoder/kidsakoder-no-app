@@ -45,7 +45,7 @@ repositories {
     }
 }
 
-// Task enabling es6 transpiling for Enonic
+/* Task enabling es6 transpiling for Enonic */
 
 task babel(type: NodeTask, dependsOn: 'npmInstall') {
     script = file('node_modules/.bin/babel')
@@ -69,24 +69,14 @@ task babel(type: NodeTask, dependsOn: 'npmInstall') {
 
 jar.dependsOn += babel
 
-// Task for compiling SCSS to CSS
+/* Task for compiling React apps and SASS */
 
-//task scss(type: NodeTask, dependsOn: 'npmInstall') {
-//    script = file('node_modules/webpack/bin/webpack.js')
-//
-//    if (project.hasProperty('watch')) {
-//        args = ['-w']
-//    }
-//}
+task webpack(type: NodeTask, dependsOn: 'npmInstall') {
+    script = file('node_modules/webpack/bin/webpack.js')
 
-// Task for compiling React apps
+    if (project.hasProperty('watch')) {
+        args = ['-w']
+    }
+}
 
-//task webpack(type: NodeTask, dependsOn: 'npmInstall') {
-//    script = file('node_modules/webpack/bin/webpack.js')
-//
-//    if (project.hasProperty('watch')) {
-//        args = ['-w']
-//    }
-//}
-//
-//jar.dependsOn += webpack
+jar.dependsOn += webpack

@@ -5,7 +5,7 @@ let libs = { portal, thymeleaf };
 
 let views = {
   defaultview: resolve('default.html')
-}
+};
 
 // Handle the GET request
 exports.get = function(req) {
@@ -23,8 +23,12 @@ exports.get = function(req) {
     // Render HTML from the view file
     let body = libs.thymeleaf.render(views.defaultview, model);
 
-    let customStyles = `<link rel="stylesheet" href="${libs.portal.assetUrl({
+    let customStyles = `
+    <link rel="stylesheet" href="${libs.portal.assetUrl({
         path: 'css/style.min.css'
+    })}">
+    <link rel="stylesheet" href="${libs.portal.assetUrl({
+        path: 'css/main.css'
     })}">`;
 
     // Return the response object
