@@ -11,18 +11,19 @@ let views = {
 exports.get = function(req) {
     // Get the content that is using the page
     let content = libs.portal.getContent();
-
-
-    // Extract the head region which contains component parts
-    let headRegion = content.page.regions.head;
+    var config = content.page.config;
 
     // Extract the main region which contains component parts
     let mainRegion = content.page.regions.main;
 
     // Prepare the model that will be passed to the view
     let model = {
-        headRegion,
-        mainRegion
+        mainRegion,
+        //Get the image for top of website
+        image: libs.portal.imageUrl({
+          id: config.image,
+          scale: "block(800, 250)"
+        })
     }
 
     // Render HTML from the view file
