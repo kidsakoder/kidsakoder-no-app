@@ -21,27 +21,21 @@ exports.get = function(req) {
 
     // Prepare the model that will be passed to the view
     let model = {
-        headRegion: headRegion,
-        mainRegion: mainRegion
+        headRegion,
+        mainRegion
     }
 
     // Render HTML from the view file
     let body = libs.thymeleaf.render(views.defaultview, model);
-
-    let customStyles = `
-    <link rel="stylesheet" href="${libs.portal.assetUrl({
-        path: 'css/style.min.css'
-    })}">
-    <link rel="stylesheet" href="${libs.portal.assetUrl({
-        path: 'css/main.css'
-    })}">`;
 
     // Return the response object
     return {
         body,
         pageContributions: {
           headEnd: [
-              customStyles
+            `<link rel="stylesheet" href="${libs.portal.assetUrl({
+                path: 'css/main.css'
+            })}">`
           ]
         }
     }
