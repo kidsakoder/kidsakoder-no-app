@@ -22,7 +22,7 @@ exports.get = function(req) {
         //Get the image for top of website
         image: libs.portal.imageUrl({
           id: config.image,
-          scale: "block(800, 250)"
+          scale: "block(800, 200)"
         })
     }
 
