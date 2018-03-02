@@ -3,9 +3,8 @@ import { render } from 'react-dom';
 
 class App extends React.Component {
     render() {
-        return <p>Hello React project!</p>;
+        return <p>This is a React app</p>;
     }
 }
-console.log(`works ${2} nicee`);
 
 render(<App/>, document.getElementById('landing-page'));
