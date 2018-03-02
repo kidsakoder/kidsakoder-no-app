@@ -1,14 +1,14 @@
 .lkk-main-button {
   font-family: 'Source Code Pro', monospace;
 }
+.lkk-main-button a {
+  text-decoration: none;
+}
 .img-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 200px;
-}
-.img-main-btn {
-  width: 50%;
+
 }
 .btn-container {
   text-align: center;
@@ -32,10 +32,10 @@
 
 .title-main-btn {
   font-size: 2.1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
-
+/* Mobile device */
 @media only screen and (max-width: 48em) {
   .lkk-main-button {
     margin: 10px;
@@ -44,8 +44,28 @@
     display: none;
   }
 }
-@media only screen and (min-width: 48em) {
+/* Tablet device */
+@media only screen and (min-width: 48em) and (max-width: 64em) {
   .lkk-main-button {
-    padding: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
+  .img-main-btn {
+    width: 150px;
+    height:150px;
+    padding-bottom: 3px;
+  }
+}
+/* Desktop device */
+@media only screen and (min-width: 64em) {
+  .lkk-main-button {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .img-main-btn {
+    width: 200px;
+    height: 200px;
+    padding-bottom: 5px;
+  }
+
 }

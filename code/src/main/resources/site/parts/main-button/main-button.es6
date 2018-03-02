@@ -32,7 +32,7 @@ exports.get = function(req) {
     url: btnUrl,
     image: libs.portal.imageUrl({
       id: component.config.image,
-      scale: "block(450, 275)"
+      scale: "block(250, 250)"
     }),
     alt: component.config.alt
   }
