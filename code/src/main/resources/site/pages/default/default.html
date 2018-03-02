@@ -11,11 +11,9 @@
 
 <body data-portal-component-type="page">
   <header class="lkk-header">
-    <main data-portal-region="head">
-      <div data-th-if="${headRegion}" data-th-each="component : ${headRegion.components}" data-th-remove="tag">
-        <div data-portal-component="${component.path}" data-th-remove="tag"></div>
-      </div>
-    </main>
+    <img class="img-main-btn" data-th-src="${image}"/>
+
+
 
     <div class="lkk-header-inner">
       <a class="lkk-logo" href="https://kidsakoder.no/" title="Lær Kidsa Koding!" rel="home">
