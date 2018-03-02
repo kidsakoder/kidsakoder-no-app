@@ -12,11 +12,16 @@ exports.get = function(req) {
     // Get the content that is using the page
     let content = libs.portal.getContent();
 
+
+    // Extract the head region which contains component parts
+    let headRegion = content.page.regions.head;
+
     // Extract the main region which contains component parts
     let mainRegion = content.page.regions.main;
 
     // Prepare the model that will be passed to the view
     let model = {
+        headRegion: headRegion,
         mainRegion: mainRegion
     }
 

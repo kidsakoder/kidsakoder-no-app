@@ -2,6 +2,7 @@
   <display-name>Default</display-name>
   <config/>
   <regions>
+    <region name="head"/>
     <region name="main"/>
   </regions>
 </page>
