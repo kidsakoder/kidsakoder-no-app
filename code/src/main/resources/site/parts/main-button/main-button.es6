@@ -1,25 +1,24 @@
-var libs = {
-  portal: require('/lib/xp/portal'),
-  thymeleaf: require('/lib/xp/thymeleaf'),
-  content : require('/lib/xp/content'),
+import * as portal from '/lib/xp/portal';
+import * as thymeleaf from '/lib/xp/thymeleaf';
+import * as content from '/lib/xp/content';
+
+let libs = { portal, thymeleaf, content };
+
+let views = {
+  buttonItem: resolve('main-button.html'),
 };
 
-var views = {
-  buttonItem: resolve('main-button.html'),
-  css: resolve('main-button-css.html')
-}
-
 exports.get = function(req) {
-  var component = libs.portal.getComponent();
-  var config = component.config;
-  var btnUrl = "#";
+  let component = libs.portal.getComponent();
+  let config = component.config;
+  let btnUrl = "#";
 
   if (config.url) {
     if (config.url._selected === 'content') {
-      var btnKey = config.url.content.key;
+      let btnKey = config.url.content.key;
       if (btnKey) {
         btnUrl = libs.portal.pageUrl({
-          id: btnKey
+          id: btnKey,
         });
       }
     } else if (config.url._selected === 'text') {
@@ -27,22 +26,19 @@ exports.get = function(req) {
     }
   }
 
-  var model = {
+  let model = {
     title: component.config.title,
     url: btnUrl,
     image: libs.portal.imageUrl({
       id: component.config.image,
-      scale: "block(250, 250)"
+      scale: 'block(250, 250)',
     }),
-    alt: component.config.alt
-  }
+    alt: component.config.alt,
+  };
 
-  var body = libs.thymeleaf.render(views.buttonItem, model);
+  let body = libs.thymeleaf.render(views.buttonItem, model);
 
   return {
-    body: body,
-    pageContributions: {
-      headEnd: libs.thymeleaf.render(views.css, model)
-    }
-  }
+    body,
+  };
 };
