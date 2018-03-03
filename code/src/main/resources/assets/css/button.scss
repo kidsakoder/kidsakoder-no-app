@@ -1,4 +1,4 @@
-.btn-container {
+.btn {
     text-align: center;
     border-radius: 12pt;
     background-color: #E5E5E5;
@@ -7,20 +7,17 @@
     align-items: center;
     justify-content: center;
     box-shadow: 6px 6px #4D4D4D;
-}
-
-.btn-container:hover {
-    box-shadow: 0 0;
-}
-
-.btn-container:active {
-    box-shadow: 0 0;
-    color: #5CFF5C;
-    background-color: #4D4D4D;
-}
-
-.title-main-btn {
     font-size: 2.1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+.btn:hover {
+    box-shadow: 0 0;
+}
+
+.btn:active {
+    box-shadow: 0 0;
+    color: #5CFF5C;
+    background-color: #4D4D4D;
 }
