@@ -12,8 +12,14 @@
   justify-content: center;
 }
 
+.img-container > div {
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .img-container, .img-container > div {
-  height: 100px;
+  height: 200px;
   width: 100%;
 }
 
