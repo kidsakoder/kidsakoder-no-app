@@ -1,8 +1,11 @@
+// Change defaults
 @import 'normalize.scss';
-@import 'defaultPage.scss';
-@import 'mainBtn.scss';
-@import 'theme.scss';
 
-body {
-    margin: 0;
-}
+// Common styling
+@import 'theme.scss';
+@import 'layout.scss';
+@import 'button.scss';
+
+// Spesific styling
+@import 'defaultPage.scss';
+@import 'defaultPageButton.scss';
