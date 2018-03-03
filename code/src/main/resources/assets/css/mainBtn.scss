@@ -1,8 +1,8 @@
-.lkk-main-button {
+.main-button {
   font-family: 'Source Code Pro', monospace;
 }
 
-.lkk-main-button a {
+.main-button a {
   text-decoration: none;
 }
 
@@ -52,7 +52,7 @@
 
 /* Mobile device */
 @media only screen and (max-width: 48em) {
-  .lkk-main-button {
+  .main-button {
     margin: 10px;
   }
 
@@ -63,7 +63,7 @@
 
 /* Tablet device */
 @media only screen and (min-width: 48em) and (max-width: 64em) {
-  .lkk-main-button {
+  .main-button {
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -77,7 +77,7 @@
 
 /* Desktop device */
 @media only screen and (min-width: 64em) {
-  .lkk-main-button {
+  .main-button {
     padding-left: 50px;
     padding-right: 50px;
   }
