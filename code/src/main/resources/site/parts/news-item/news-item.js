@@ -4,9 +4,8 @@ var libs = {
 };
 
 var views = {
-  newsItem: resolve('news-item.html'),
-  css: resolve('news-item-css.html')
-}
+  newsItem: resolve('news-item.html')
+};
 
 // Handle the GET request
 exports.get = function(req) {
@@ -22,7 +21,7 @@ exports.get = function(req) {
         scale: "block(450,275)"
       }),
       alt: component.config.alt
-    }
+    };
 
     // Render HTML from the view file
     var body = libs.thymeleaf.render(views.newsItem, model);
@@ -30,8 +29,5 @@ exports.get = function(req) {
     // Return the response object
     return {
         body: body,
-        pageContributions: {
-          headEnd: libs.thymeleaf.render(views.css, model)
-        }
-    }
+    };
 };
