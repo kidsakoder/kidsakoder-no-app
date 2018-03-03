@@ -26,12 +26,16 @@ exports.get = function(req) {
     }
   }
 
+  let image = libs.portal.imageUrl({
+    id: component.config.image,
+    scale: 'block(250, 250)',
+  });
+
   let model = {
     title: component.config.title,
     url: btnUrl,
-    image: libs.portal.imageUrl({
-      id: component.config.image,
-      scale: 'block(250, 250)',
+    bgimage: libs.portal.processHtml({
+      value: `<div style="background-image: url(${image}})"></div>`,
     }),
     alt: component.config.alt,
   };
