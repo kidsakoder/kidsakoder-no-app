@@ -35,7 +35,7 @@ exports.get = function(req) {
     title: component.config.title,
     url: btnUrl,
     bgimage: libs.portal.processHtml({
-      value: `<div style="background-image: url(${image}})"></div>`,
+      value: `<div style="background-image: url(${image})"></div>`,
     }),
     alt: component.config.alt,
   };
