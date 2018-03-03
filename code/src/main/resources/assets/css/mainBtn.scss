@@ -1,90 +1,90 @@
 .main-button {
-  font-family: 'Source Code Pro', monospace;
+    font-family: 'Source Code Pro', monospace;
 }
 
 .main-button a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .img-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .img-container > div {
-  background-position: center center;
-  background-size: contain;
-  background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .img-container, .img-container > div {
-  height: 200px;
-  width: 100%;
+    height: 200px;
+    width: 100%;
 }
 
 .btn-container {
-  text-align: center;
-  border-radius: 12pt;
-  background-color: #E5E5E5;
-  color: #4D4D4D;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 6px 6px #4D4D4D;
+    text-align: center;
+    border-radius: 12pt;
+    background-color: #E5E5E5;
+    color: #4D4D4D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 6px 6px #4D4D4D;
 }
 
 .btn-container:hover {
-  box-shadow: 0 0;
+    box-shadow: 0 0;
 }
 
 .btn-container:active {
-  box-shadow: 0 0;
-  color: #5CFF5C;
-  background-color: #4D4D4D;
+    box-shadow: 0 0;
+    color: #5CFF5C;
+    background-color: #4D4D4D;
 }
 
 .title-main-btn {
-  font-size: 2.1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+    font-size: 2.1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 /* Mobile device */
 @media only screen and (max-width: 48em) {
-  .main-button {
-    margin: 10px;
-  }
+    .main-button {
+        margin: 10px;
+    }
 
-  .img-container {
-    display: none;
-  }
+    .img-container {
+        display: none;
+    }
 }
 
 /* Tablet device */
 @media only screen and (min-width: 48em) and (max-width: 64em) {
-  .main-button {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+    .main-button {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 
-  .img-main-btn {
-    width: 150px;
-    height:150px;
-    padding-bottom: 3px;
-  }
+    .img-main-btn {
+        width: 150px;
+        height:150px;
+        padding-bottom: 3px;
+    }
 }
 
 /* Desktop device */
 @media only screen and (min-width: 64em) {
-  .main-button {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
+    .main-button {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
 
-  .img-main-btn {
-    width: 200px;
-    height: 200px;
-    padding-bottom: 5px;
-  }
+    .img-main-btn {
+        width: 200px;
+        height: 200px;
+        padding-bottom: 5px;
+    }
 }
