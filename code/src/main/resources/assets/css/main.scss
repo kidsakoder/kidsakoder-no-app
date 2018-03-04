@@ -1,11 +1,11 @@
 // Change defaults
-@import 'normalize.scss';
+@import 'common/normalize.scss';
 
 // Common styling
-@import 'media.scss';
-@import 'theme.scss';
-@import 'layout.scss';
-@import 'button.scss';
+@import 'common/media.scss';
+@import 'common/theme.scss';
+@import 'common/layout.scss';
+@import 'common/button.scss';
 
 // Spesific styling
 @import 'defaultPage.scss';
