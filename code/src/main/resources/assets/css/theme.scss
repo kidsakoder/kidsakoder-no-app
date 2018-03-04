@@ -1,12 +1,12 @@
 // Colors
-$background: #fff;
+$background-color: #fff;
 
 // CSS variables
 :root {
-    --background: #f00;
+    --background-color: #0f0;
 }
 
 html, body {
-    background-color: $background;
-    background-color: var(--background);
+    background-color: $background-color;
+    background-color: var(--background-color);
 }
