@@ -27,7 +27,7 @@ exports.get = function(req) {
   let model = {
     mainRegion,
     headerHtml: portal.processHtml({
-      value: `<header class="head" style="background-image: url(${image})">${header}</header>`,
+      value: `<div class="inner-wrapper" style="background-image: url(${image})">${header}</div>`,
     }),
   };
 
