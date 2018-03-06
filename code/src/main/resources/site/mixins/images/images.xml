@@ -1,0 +1,15 @@
+<mixin>
+  <display-name>Image attributes</display-name>
+  <items>
+    <input type="ImageSelector" name="image">
+      <label>Button picture</label>
+      <occurrences minimum="1" maximum="1"/>
+      <help-text>The logo shown for the button.</help-text>
+    </input>
+    <input type="TextLine" name="alt">
+      <label>Alternative text</label>
+      <occurrences minimum="1" maximum="1"/>
+      <help-text>The text displayed when picture cannot be loaded.</help-text>
+    </input>
+  </items>
+</mixin>

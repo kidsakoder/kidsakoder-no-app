@@ -1,47 +1,59 @@
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-flow: column nowrap;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
+.foot,
 .head,
-.main,
-.foot {
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-
-    @at-root .inner-wrapper {
-        margin: auto;
-        max-width: 1024px;
-        flex: 1 0 auto;
-    }
+.main {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  @at-root .inner-wrapper {
+    margin: auto;
+    max-width: 1024px;
+    flex: 1 0 auto;
+  }
 }
 
 .head {
-    flex-basis: (100vw * 540 / 1920);
+  flex-basis: (100vw * 540 / 1920);
+  @include mobile {
+    flex-basis: ($mobile-to-tablet-width * 540 / 1920);
+  }
+  @include desktop {
+    flex-basis: ($tablet-to-desktop-width * 540 / 1920);
+  }
 
-    @include mobile {
-        flex-basis: ($mobile-to-tablet-width * 540 / 1920);
-    }
-
-    @include desktop {
-        flex-basis: ($tablet-to-desktop-width * 540 / 1920);
-    }
-
-    .inner-wrapper {
-        max-width: 100%;
-        margin: 0;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-    }
+  .inner-wrapper {
+    max-width: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
 }
 
 .main {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 
-    .inner-wrapper {
-        padding: 32px 16px;
-    }
+  .inner-wrapper {
+    padding: 32px 16px;
+  }
+}
+.foot {
+  .inner-wrapper {
+    max-width: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  #sponsors {
+    width: 100%;
+  }
+   #sponsors a img{
+    width: 100%;
+  }
 }
