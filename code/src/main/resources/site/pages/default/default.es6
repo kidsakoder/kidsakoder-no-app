@@ -1,40 +1,45 @@
 import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/xp/thymeleaf';
 
-let libs = { portal, thymeleaf };
-
 let views = {
-  defaultview: resolve('default.html')
+  defaultview: resolve('default.html'),
+  header: resolve('header.html'),
 };
 
 // Handle the GET request
 exports.get = function(req) {
   // Get the content that is using the page
-  let content = libs.portal.getContent();
+  let content = portal.getContent();
   var config = content.page.config;
 
   // Extract the main region which contains component parts
   let mainRegion = content.page.regions.main;
 
+  // Image in header
+  let image = portal.imageUrl({
+    id: config.image,
+    scale: 'block(800, 200)',
+  });
+
+  let header = thymeleaf.render(views.header);
+
   // Prepare the model that will be passed to the view
   let model = {
     mainRegion,
-    //Get the image for top of website
-    image: libs.portal.imageUrl({
-      id: config.image,
-      scale: 'block(800, 200)',
+    headerHtml: portal.processHtml({
+      value: `<div class="inner-wrapper" style="background-image: url(${image})">${header}</div>`,
     }),
   };
 
   // Render HTML from the view file
-  let body = libs.thymeleaf.render(views.defaultview, model);
+  let body = thymeleaf.render(views.defaultview, model);
 
   // Return the response object
   return {
     body,
     pageContributions: {
       headEnd: [
-        `<link rel="stylesheet" href="${libs.portal.assetUrl({
+        `<link rel="stylesheet" href="${portal.assetUrl({
             path: 'css/main.css'
         })}">`,
       ],

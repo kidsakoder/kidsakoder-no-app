@@ -9,27 +9,18 @@
   </head>
 
   <body data-portal-component-type="page">
-    <div class="head-container">
-      <header class="head">
-        <img class="head-image" data-th-src="${image}" />
-        <div class="head-inner">
-          <a class="logo" href="https://kidsakoder.no/" title="Lær Kidsa Koding!" rel="home">
-            <img src="https://1hzoda29f77r1yh9c33lm1ae-wpengine.netdna-ssl.com/wp-content/uploads/2015/02/LKK_small.png" alt="Lær Kidsa Koding" />
-          </a>
-        </div>
-      </header>
-    </div>
-    <div class="main-container">
-      <main class="main" data-portal-region="main">
+    <header class="head" data-th-utext="${headerHtml}"></header>
+    <main class="main">
+      <div class="inner-wrapper" data-portal-region="main">
         <div data-th-if="${mainRegion}" data-th-each="component : ${mainRegion.components}" data-th-remove="tag">
           <div data-portal-component="${component.path}" data-th-remove="tag"></div>
         </div>
-      </main>
-    </div>
-    <div class="foot-container">
-      <footer class="foot">
+      </div>
+    </main>
+    <footer class="foot">
+      <div class="inner-wrapper">
 
-      </footer>
-    </div>
+      </div>
+    </footer>
   </body>
 </html>
