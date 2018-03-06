@@ -1,0 +1,16 @@
+body {
+    min-height: 100vh;
+}
+
+.head-container,
+.main-container,
+.foot-container {
+    width: 100%;
+}
+
+.head,
+.main,
+.foot {
+    margin: auto;
+    max-width: 1024px;
+}

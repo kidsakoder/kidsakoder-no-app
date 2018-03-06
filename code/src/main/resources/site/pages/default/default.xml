@@ -1,6 +1,14 @@
 <page>
   <display-name>Default</display-name>
-  <config/>
+
+  <config>
+    <input type="ImageSelector" name="image">
+      <label>picture</label>
+      <occurrences minimum="1" maximum="1"/>
+      <help-text>This field is required. It adds the header background picture.</help-text>
+    </input>
+  </config>
+
   <regions>
     <region name="main"/>
   </regions>

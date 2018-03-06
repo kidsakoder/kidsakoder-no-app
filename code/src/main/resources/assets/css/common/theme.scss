@@ -1,0 +1,12 @@
+// Colors
+$background-color: #fff;
+
+// CSS variables
+:root {
+    --background-color: #fff;
+}
+
+html, body {
+    background-color: $background-color;
+    background-color: var(--background-color);
+}

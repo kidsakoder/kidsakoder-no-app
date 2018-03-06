@@ -1,5 +1,12 @@
-@import 'theme.scss';
+// Change defaults
+@import 'common/normalize.scss';
 
-body {
-    //background: green;
-}
+// Common styling
+@import 'common/media.scss';
+@import 'common/theme.scss';
+@import 'common/layout.scss';
+@import 'common/button.scss';
+
+// Spesific styling
+@import 'defaultPage.scss';
+@import 'defaultPageButton.scss';
