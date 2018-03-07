@@ -25,6 +25,17 @@ body {
   @include desktop {
     flex-basis: ($tablet-to-desktop-width * 540 / 1920);
   }
+  .headlogo{
+    background-color: $headfoot-color;
+    display: inline-block;
+    border-bottom-right-radius: 12pt;
+  }
+  .navitem {
+    background-color: $headfoot-color;
+    display: inline-block;
+    border-bottom-right-radius: 12pt;
+    border-top-right-radius: 12pt;
+  }
 
   .inner-wrapper {
     max-width: 100%;

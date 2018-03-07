@@ -1,6 +1,6 @@
 // Colors
 $background-color: #fff;
-$footer-color: #E5E5E5
+$headfoot-color: #E5E5E5
 
 // CSS variables
 :root {
@@ -12,5 +12,5 @@ html, body {
     background-color: var(--background-color);
 }
 .foot {
-  background-color: $footer-color;
+  background-color: $headfoot-color;
 }
