@@ -4,6 +4,18 @@ export default class Graphql {
     }
 
     query(query, callback) {
+        if (typeof query === 'object') {
+            if ('contentType' in query && 'query' in query) {
+                query = `{
+                    guillotine {
+                        query(contentTypes: "no.kidsakoder.app:${query.contentType}") {
+                        ${query.query}
+                        }
+                    }
+                }`;
+            }
+        }
+
         let requst = fetch(this.url, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },

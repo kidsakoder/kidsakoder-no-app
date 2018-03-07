@@ -11,28 +11,20 @@ class App extends React.Component {
         };
 
         this.client = new Graphql();
-        this.client.query(`
-        {
-          guillotine {
-            query(contentTypes: "no.kidsakoder.app:event") {
-              displayName
-            }
-          }
-        }
-        `, data => {
-            console.log(data)
-            this.setState(
-                Object.assign({}, this.state, {
+        this.client.query({
+            contentType: 'event',
+            query: 'displayName',
+        }, data => {
+            this.setState(Object.assign({}, this.state, {
                     events: data.data.guillotine.query,
-                })
-            );
+            }));
         });
     }
 
     render() {
         let events = this.state.events.map((e, i) => {
             return <div key={i}>{e.displayName}</div>;
-        })
+        });
 
         return (
             <React.Fragment>
