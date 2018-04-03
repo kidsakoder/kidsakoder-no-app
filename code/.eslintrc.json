@@ -14,6 +14,12 @@
         "allowTemplateLiterals": true
       }
     ],
+    "max-len": [
+      "error",
+      {
+        "code": 80
+      }
+    ],
     "comma-dangle": [
       "error",
       {
@@ -28,9 +34,19 @@
       "error",
       2
     ],
+    "react/prop-types": [
+      1,
+      {
+        "ignore": [
+          "children"
+        ]
+      }
+    ],
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "import/no-absolute-path": "off",
+    "react/no-array-index-key": "off",
+    "react/prefer-stateless-function": "off",
     "react/jsx-filename-extension": [
       1,
       {
@@ -48,6 +64,7 @@
   },
   "globals": {
     "require": true,
-    "resolve": true
+    "resolve": true,
+    "location": true
   }
 }
