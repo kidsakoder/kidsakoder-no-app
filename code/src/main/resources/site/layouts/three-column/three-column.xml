@@ -1,6 +1,17 @@
 <layout>
   <display-name>Three column</display-name>
-  <config/>
+  <config>
+    <input name="fullWidth" type="CheckBox">
+      <label>Full width</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <option value="33-33-33">33-33-33</option>
+        <option value="50-25-25">50-25-25</option>
+        <option value="25-50-25">25-50-25</option>
+        <option value="25-25-50">25-25-50</option>
+      </config>
+    </input>
+  </config>
   <regions>
     <region name="left"/>
     <region name="middle"/>

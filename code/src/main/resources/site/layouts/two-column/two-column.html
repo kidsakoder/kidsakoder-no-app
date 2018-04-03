@@ -1,0 +1,15 @@
+<section class="row around-md">
+
+  <div data-portal-region="left" class="col-sm-6 col-xs-12">
+      <div data-th-each="component : ${leftRegion.components}" data-th-remove="tag">
+          <div data-portal-component="${component.path}" data-th-remove="tag" />
+      </div>
+  </div>
+
+  <div data-portal-region="right" class="col-sm-6 col-xs-12">
+      <div data-th-each="component : ${rightRegion.components}" data-th-remove="tag">
+          <div data-portal-component="${component.path}" data-th-remove="tag" />
+      </div>
+  </div>
+
+</section>

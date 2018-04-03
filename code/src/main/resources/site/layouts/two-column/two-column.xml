@@ -1,0 +1,8 @@
+<layout>
+  <display-name>Two column</display-name>
+  <config/>
+  <regions>
+    <region name="left"/>
+    <region name="right"/>
+  </regions>
+</layout>
