@@ -28,6 +28,9 @@
       "error",
       2
     ],
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "import/no-absolute-path": "off",
     "react/jsx-filename-extension": [
       1,
       {
