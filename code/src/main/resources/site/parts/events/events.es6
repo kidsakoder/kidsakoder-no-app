@@ -3,16 +3,12 @@ var libs = {
   thymeleaf: require('/lib/xp/thymeleaf')
 };
 
-exports.get = function (req) {
+exports.get = function (request) {
   var component = libs.portal.getComponent();
   var content = libs.portal.getContent();
   var view = resolve('events.html');
 
   return {
-    body: libs.thymeleaf.render(view, {
-      request: req,
-      content: content,
-      component: component
-    })
+    body: libs.thymeleaf.render(view, { request, content, component })
   };
 };

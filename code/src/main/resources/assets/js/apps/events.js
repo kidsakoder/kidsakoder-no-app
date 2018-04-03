@@ -16,7 +16,7 @@ class App extends React.Component {
             query: 'displayName',
         }, data => {
             this.setState(Object.assign({}, this.state, {
-                    events: data.data.guillotine.query,
+                events: data.data.guillotine.query,
             }));
         });
     }
@@ -35,4 +35,4 @@ class App extends React.Component {
     }
 }
 
-render(<App/>, document.getElementById('events'));
+render(<App/>, document.currentScript.parentElement.querySelector('.events'));
