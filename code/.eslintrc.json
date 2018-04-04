@@ -34,14 +34,7 @@
       "error",
       2
     ],
-    "react/prop-types": [
-      1,
-      {
-        "ignore": [
-          "children"
-        ]
-      }
-    ],
+    "react/prop-types": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "import/no-absolute-path": "off",

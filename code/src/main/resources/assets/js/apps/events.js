@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, } from 'react-dom';
 import Graphql from './utils/graphql';
-import { Map, } from './components/Map';
+import Map from './components/Map';
 
 class Events extends React.Component {
   constructor() {
@@ -26,29 +26,36 @@ class Events extends React.Component {
         );
       }
     );
+
+    this.click = this.click.bind(this);
   }
 
   click(evt) {
     this.setState(
       Object.assign({}, this.state, {
-        selectedEvent: <p>{evt.target.innerHTML}</p>,
+        selectedEvent: evt.target.innerHTML,
       })
     );
   }
 
   render() {
-    const events = this.state.events.map((e, i) => (
-      <button key={i} onClick={this.click}>{e.displayName}</button>
-    ));
+    const events = this.state.events.map((e, i) => {
+      const style = {
+        backgroundColor: 'red',
+      };
+
+      return (
+        <button key={i} onClick={this.click} style={style}>
+          {e.displayName}
+        </button>
+      );
+    });
 
     return (
       <React.Fragment>
         <h3>Events</h3>
         {events}
-        <Map>
-          <h2>Dette er et kart i en portal</h2>
-          {this.state.selectedEvent}
-        </Map>
+        <Map selectedEvent={this.state.selectedEvent} />
       </React.Fragment>
     );
   }
