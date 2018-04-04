@@ -1,5 +1,7 @@
 // Colors
 $background-color: #fff;
+$headfoot-color: #E5E5E5;
+$menutext-color: #000;
 
 // CSS variables
 :root {
@@ -9,4 +11,7 @@ $background-color: #fff;
 html, body {
     background-color: $background-color;
     background-color: var(--background-color);
+}
+.foot {
+  background-color: $headfoot-color;
 }

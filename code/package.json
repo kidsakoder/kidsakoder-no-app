@@ -1,6 +1,10 @@
 {
   "name": "kidsakoder-no",
   "version": "0.0.1",
+  "dependencies": {
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
+  },
   "devDependencies": {
     "autoprefixer": "8.0.0",
     "babel-cli": "6.26.0",
@@ -23,8 +27,6 @@
     "node-sass": "4.7.2",
     "postcss-loader": "2.1.1",
     "prettier": "^1.11.1",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
     "sass-loader": "6.0.6",
     "style-loader": "0.20.2",
     "webpack": "4.0.1",
