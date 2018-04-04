@@ -7,10 +7,14 @@ exports.get = () => {
 
   const site = portal.getSite();
 
+  const component = portal.getComponent();
+  const { config: { maxNews } } = component;
+
   // Get all the country contents (in the current site)
   const result = content.query({
     start: 0,
-    count: 100,
+    count: maxNews || 100,
+    sort: 'createdTime DESC',
     contentTypes: [`${app.name}:news-element`],
     query: `_path LIKE '/content${site._path}/*'`,
   });
