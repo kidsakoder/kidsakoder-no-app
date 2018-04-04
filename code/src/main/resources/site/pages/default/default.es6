@@ -50,11 +50,9 @@ exports.get = () => {
   return {
     body,
     pageContributions: {
-      headEnd: [
-        `<link rel="stylesheet" href="${portal.assetUrl({
-          path: 'css/main.css',
-        })}">`,
-      ],
+      headEnd: [`<link rel="stylesheet" href="${portal.assetUrl({
+        path: 'css/main.css',
+      })}">`],
     },
   };
 };

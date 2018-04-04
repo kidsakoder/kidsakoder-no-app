@@ -34,6 +34,18 @@
       "error",
       2
     ],
+    "array-element-newline": [
+      "error",
+      {
+        "minItems": 3
+      }
+    ],
+    "array-bracket-newline": [
+      "error",
+      {
+        "minItems": 3
+      }
+    ],
     "no-underscore-dangle": "off",
     "no-plusplus": "off",
     "react/prop-types": "off",
