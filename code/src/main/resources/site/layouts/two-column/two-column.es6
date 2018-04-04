@@ -1,21 +1,27 @@
 import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/xp/thymeleaf';
 
-exports.get = () => {
-  const component = portal.getComponent();
-  const views = { layout: resolve('./three-column.html'), };
-  const model = {
+let views = {
+  layout: resolve('./two-column.html'),
+};
+
+exports.get = function(req) {
+
+  // Find the current component.
+  let component = portal.getComponent();
+
+  // Define the model
+  let model = {
     leftRegion: component.regions.left,
-    middleRegion: component.regions.middle,
     rightRegion: component.regions.right,
   };
 
   // Render a thymeleaf template
-  const body = thymeleaf.render(views.layout, model);
+  let body = thymeleaf.render(views.layout, model);
 
   // Return the result
   return {
-    body,
+    body: body,
     contentType: 'text/html',
   };
 };

@@ -1,0 +1,7 @@
+<layout>
+  <display-name>One column</display-name>
+  <config/>
+  <regions>
+    <region name="middle"/>
+  </regions>
+</layout>

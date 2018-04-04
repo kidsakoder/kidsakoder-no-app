@@ -1,0 +1,9 @@
+<section class="row center-md">
+
+  <div data-portal-region="middle" class="col-xs-12">
+      <div data-th-each="component : ${middleRegion.components}" data-th-remove="tag">
+          <div data-portal-component="${component.path}" data-th-remove="tag" />
+      </div>
+  </div>
+
+</section>

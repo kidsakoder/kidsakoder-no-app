@@ -9,3 +9,7 @@ pushd enonic-server
 docker-compose build
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --no-deps -d
 popd
+
+if [[ ! $1 =~ ^(-q|--quiet)$ ]]; then
+    docker logs -f kidsakoder-no
+fi

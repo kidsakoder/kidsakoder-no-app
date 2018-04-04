@@ -1,6 +1,10 @@
 {
   "name": "kidsakoder-no",
   "version": "0.0.1",
+  "dependencies": {
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
+  },
   "devDependencies": {
     "autoprefixer": "8.0.0",
     "babel-cli": "6.26.0",
@@ -10,13 +14,19 @@
     "babel-preset-react": "6.24.1",
     "css-loader": "0.28.10",
     "es6-promise": "4.2.4",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
     "extract-text-webpack-plugin": "next",
     "flexboxgrid": "6.3.1",
     "glob": "7.1.2",
     "node-sass": "4.7.2",
     "postcss-loader": "2.1.1",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
+    "prettier": "^1.11.1",
     "sass-loader": "6.0.6",
     "style-loader": "0.20.2",
     "webpack": "4.0.1",
