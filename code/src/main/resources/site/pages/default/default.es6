@@ -11,7 +11,7 @@ const views = {
 exports.get = () => {
   // Get the content that is using the page
   const content = portal.getContent();
-  const { page: { config, }, } = content;
+  const { page: { config } } = content;
 
   // Extract the main region which contains component parts
   const mainRegion = content.page.regions.main;

@@ -23,10 +23,10 @@
     "comma-dangle": [
       "error",
       {
-        "arrays": "always",
-        "objects": "always",
-        "imports": "always",
-        "exports": "always",
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
         "functions": "ignore"
       }
     ],
@@ -34,6 +34,8 @@
       "error",
       2
     ],
+    "no-underscore-dangle": "off",
+    "no-plusplus": "off",
     "react/prop-types": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
@@ -58,6 +60,7 @@
   "globals": {
     "require": true,
     "resolve": true,
-    "location": true
+    "location": true,
+    "app": true
   }
 }

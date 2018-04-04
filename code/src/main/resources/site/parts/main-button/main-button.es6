@@ -1,23 +1,20 @@
 import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/xp/thymeleaf';
-import * as content from '/lib/xp/content';
 
-let libs = { portal, thymeleaf, content };
-
-let views = {
+const views = {
   buttonItem: resolve('main-button.html'),
 };
 
-exports.get = function(req) {
-  let component = libs.portal.getComponent();
-  let config = component.config;
-  let btnUrl = "#";
+exports.get = () => {
+  const component = portal.getComponent();
+  const { config } = component;
+  let btnUrl = '#';
 
   if (config.url) {
     if (config.url._selected === 'content') {
-      let btnKey = config.url.content.key;
+      const btnKey = config.url.content.key;
       if (btnKey) {
-        btnUrl = libs.portal.pageUrl({
+        btnUrl = portal.pageUrl({
           id: btnKey,
         });
       }
@@ -26,23 +23,21 @@ exports.get = function(req) {
     }
   }
 
-  let image = libs.portal.imageUrl({
+  const image = portal.imageUrl({
     id: component.config.image,
     scale: 'block(250, 250)',
   });
 
-  let model = {
+  const model = {
     title: component.config.title,
     url: btnUrl,
-    bgimage: libs.portal.processHtml({
+    bgimage: portal.processHtml({
       value: `<div style="background-image: url(${image})"></div>`,
     }),
     alt: component.config.alt,
   };
 
-  let body = libs.thymeleaf.render(views.buttonItem, model);
+  const body = thymeleaf.render(views.buttonItem, model);
 
-  return {
-    body,
-  };
+  return { body };
 };
