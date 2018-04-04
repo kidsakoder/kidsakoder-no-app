@@ -1,0 +1,8 @@
+#events {
+    width: 100%;
+    min-height: 200px;
+}
+
+.react-app:empty:after {
+    content: 'Din nettleser må aktivere JavaScript for å kjøre denne applikasjonen...';
+}
