@@ -1,6 +1,5 @@
 import * as portal from "/lib/xp/portal";
 import * as thymeleaf from "/lib/xp/thymeleaf";
-import * as util from "/lib/enonic/util";
 
 exports.get = function(req) {
   let component = portal.getComponent();

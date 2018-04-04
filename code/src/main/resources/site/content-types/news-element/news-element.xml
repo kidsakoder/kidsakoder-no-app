@@ -1,18 +1,24 @@
 <content-type>
-    <display-name>Artikkel</display-name>
+    <display-name>Nyhets element</display-name>
     <super-type>base:structured</super-type>
     <form>
+
+        <!--
+        Fin ut hvordan man legger til forfattere
         <input name="authors" type="ContentSelector">
-            <label>Forfattere</label>
-            <occurrences minimum="0" maximum="0"/>
+            <label>Forfatter(e)</label>
+            <help-text>Legg til forfattere fra drop down menyen</help-text>
+            <occurrences minimum="1" maximum="0"/>
             <config>
                 <relationship-type>system:reference</relationship-type>
                 <allow-content-type>person</allow-content-type>
             </config>
         </input>
+        -->
         <input name="tags" type="Tag">
             <label>Emneknagger</label>
-            <occurrences minimum="0" maximum="3"/>
+            <help-text>Legg til relevante nøkkelord</help-text>
+            <occurrences minimum="0" maximum="0"/>
             <config/>
         </input>
         <field-set name="content">
@@ -20,17 +26,18 @@
             <items>
                 <input name="image" type="ImageSelector">
                     <label>Oppslagsbilde</label>
+                    <help-text>Hovedbilde til nyhetsartikkelen</help-text>
                     <occurrences minimum="0" maximum="1"/>
                 </input>
                 <input name="caption" type="TextLine">
                     <label>Bildetekst</label>
+                    <help-text>Beskrivene tekst til hovedbilde</help-text>
                     <occurrences minimum="0" maximum="1"/>
                 </input>
             </items>
         </field-set>
         <input name="preface" type="TextArea">
             <label>Ingress</label>
-            <indexed>true</indexed>
             <occurrences minimum="0" maximum="1"/>
             <config/>
         </input>

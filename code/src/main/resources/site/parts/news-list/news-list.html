@@ -1,0 +1,8 @@
+<div role="main">
+    <p>news test </p>
+    <li data-th-each="news-element : ${news-elements}">
+        <strong>
+            <p class="preface" data-th-text="${news-element.name}"></p>
+        </strong>
+    </li>
+</div>
