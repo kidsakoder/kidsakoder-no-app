@@ -7,6 +7,6 @@ exports.get = request => {
   const view = resolve('map.html');
 
   return {
-    body: thymeleaf.render(view, { request, content, component, }),
+    body: thymeleaf.render(view, { request, content, component }),
   };
 };

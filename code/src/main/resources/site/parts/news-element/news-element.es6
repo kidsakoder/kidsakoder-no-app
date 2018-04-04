@@ -1,18 +1,16 @@
-var libs = {
-  portal: require('/lib/xp/portal'),
-  thymeleaf: require('/lib/xp/thymeleaf')
-};
+import * as portal from '/lib/xp/portal';
+import * as thymeleaf from '/lib/xp/thymeleaf';
 
-exports.get = function (req) {
-  var component = libs.portal.getComponent();
-  var content = libs.portal.getContent();
-  var view = resolve('news-element.html');
+exports.get = request => {
+  const component = portal.getComponent();
+  const content = portal.getContent();
+  const view = resolve('news-element.html');
 
   return {
-    body: libs.thymeleaf.render(view, {
-      request: req,
-      content: content,
-      component: component
-    })
+    body: thymeleaf.render(view, {
+      request,
+      content,
+      component,
+    }),
   };
 };

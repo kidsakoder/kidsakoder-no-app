@@ -2,40 +2,40 @@ import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/xp/thymeleaf';
 import * as content from '/lib/xp/content';
 
-exports.get = function(req) {
-    var model = {};
+exports.get = () => {
+  const model = {};
 
-    var site = portal.getSite();
+  const site = portal.getSite();
 
-    // Get all the country contents (in the current site)
-    var result = content.query({
-        start: 0,
-        count: 100,
-        contentTypes: [
-            app.name + ':news-element'
-        ],
-        "query": "_path LIKE '/content" + site._path + "/*'"
-    });
+  // Get all the country contents (in the current site)
+  const result = content.query({
+    start: 0,
+    count: 100,
+    contentTypes: [
+      `${app.name}:news-element`,
+    ],
+    'query': `_path LIKE '/content${site._path}/*'`,
+  });
 
-    var hits = result.hits;
-    var news-elements = [];
+  const { hits } = result;
+  const newsElements = [];
 
-    // Loop through the contents and extract the needed data
-    for(var i = 0; i < hits.length; i++) {
+  // Loop through the contents and extract the needed data
+  for (let i = 0; i < hits.length; i++) {
 
-        var news-element = {};
-        news-element.name = hits[i].displayName;
-        news-elements.push(news-element);
-    }
+    const newsElement = {};
+    newsElement.name = hits[i].displayName;
+    newsElements.push(newsElement);
+  }
 
-    // Add the country data to the model
-    model.news-elements = news-elements;
+  // Add the country data to the model
+  model.newsElements = newsElements;
 
-    // Specify the view file to use
-    var view = resolve('news-list.html');
+  // Specify the view file to use
+  const view = resolve('news-list.html');
 
-    // Return the merged view and model in the response object
-    return {
-        body: thymeleaf.render(view, model)
-    }
+  // Return the merged view and model in the response object
+  return {
+    body: thymeleaf.render(view, model),
+  }
 };
