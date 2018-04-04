@@ -11,6 +11,6 @@ docker-compose rm -f exp
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --no-deps -d exp
 popd
 
-if [[ $1 =~ ^(-l|--logs)$ ]]; then
+if [[ ! $1 =~ ^(-q|--quiet)$ ]]; then
     docker logs -f kidsakoder-no
 fi
