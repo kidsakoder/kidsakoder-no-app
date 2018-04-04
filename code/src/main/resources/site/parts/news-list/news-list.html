@@ -1,5 +1,7 @@
 <div role="main">
+    <h2 class="preface" data-th-text="${title}"></h2>
+    <h3 class="preface" data-th-text="${subtext}"></h3>
     <div data-th-each="newsElement : ${newsElements}">
-        <p class="preface" data-th-text="${newsElement.name}"></p>
+        <p data-th-text="${newsElement.name}"></p>
     </div>
 </div>

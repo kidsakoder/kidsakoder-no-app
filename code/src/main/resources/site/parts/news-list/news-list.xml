@@ -5,11 +5,16 @@
         <label>title</label>
         <occurrences minimum="1" maximum="1"/>
       </input>
-
-      <input type="TextLine" name="alt">
+      <input type="TextLine" name="subtext">
         <label>subtext</label>
         <occurrences minimum="1" maximum="1"/>
       </input>
-
+      <input type="ContentSelector" name="news-element">
+          <label>news-element</label>
+          <occurrences minimum="1" maximum="0"/>
+          <config>
+              <allow-content-type>news-element</allow-content-type>
+          </config>
+      </input>
   </config>
 </part>

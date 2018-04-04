@@ -30,10 +30,7 @@
         "functions": "ignore"
       }
     ],
-    "indent": [
-      "error",
-      2
-    ],
+    "indent": ["error", 2],
     "no-underscore-dangle": "off",
     "no-plusplus": "off",
     "react/prop-types": "off",
@@ -45,10 +42,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     ]
   },
