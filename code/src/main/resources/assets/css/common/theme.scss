@@ -1,7 +1,24 @@
+// Palette
+$blues: #0066ff;
+$reds: #c72963 #ed1c24 #f0ccff;
+$greens: #009145 #99ff9e #99ffed #5cff5c;
+$yellows: #f7941f #ffff69;
+$greys: #4d4d4d #808080 #b2b2b2 #e5e5e5;
+$blacks: #222222 #333333;
+$whites: #fff;
+
+$primary-black: nth($blacks, 1);
+$primary-grey: nth($greys, 1);
+$primary-lightgrey: nth($greys, 1);
+$primary-white: nth($whites, 1);
+$primary-green: nth($greens, 1);
+$primary-red: nth($reds, 2);
+$primary-yellow: nth($yellows, 2);
+
 // Colors
-$background-color: #fff;
-$headfoot-color: #E5E5E5;
-$menutext-color: #000;
+$background-color: $primary-white;
+$headfoot-color: $primary-lightgrey;
+$menutext-color: $primary-grey;
 
 // CSS variables
 :root {
@@ -12,6 +29,7 @@ html, body {
     background-color: $background-color;
     background-color: var(--background-color);
 }
+
 .foot {
   background-color: $headfoot-color;
 }
