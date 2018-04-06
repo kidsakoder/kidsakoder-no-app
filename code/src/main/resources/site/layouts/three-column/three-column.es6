@@ -3,7 +3,7 @@ import * as thymeleaf from '/lib/xp/thymeleaf';
 
 exports.get = () => {
   const component = portal.getComponent();
-  const views = { layout: resolve('./three-column.html'), };
+  const views = { layout: resolve('./three-column.html') };
   const model = {
     leftRegion: component.regions.left,
     middleRegion: component.regions.middle,

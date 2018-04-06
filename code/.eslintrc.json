@@ -14,26 +14,22 @@
         "allowTemplateLiterals": true
       }
     ],
-    "max-len": [
-      "error",
-      {
-        "code": 80
-      }
-    ],
+    "max-len": [ "error", { "code": 80 } ],
     "comma-dangle": [
       "error",
       {
-        "arrays": "always",
-        "objects": "always",
-        "imports": "always",
-        "exports": "always",
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
         "functions": "ignore"
       }
     ],
-    "indent": [
-      "error",
-      2
-    ],
+    "indent": [ "error", 2 ],
+    "array-element-newline": [ "error", { "minItems": 3 } ],
+    "array-bracket-newline": [ "error", { "minItems": 3 } ],
+    "no-underscore-dangle": "off",
+    "no-plusplus": "off",
     "react/prop-types": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
@@ -43,10 +39,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [ ".js", ".jsx" ]
       }
     ]
   },
@@ -58,6 +51,8 @@
   "globals": {
     "require": true,
     "resolve": true,
-    "location": true
+    "location": true,
+    "app": true,
+    "log": true
   }
 }

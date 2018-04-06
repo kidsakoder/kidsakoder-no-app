@@ -1,6 +1,6 @@
 export default class Graphql {
   constructor(url) {
-    const { origin, pathname, } = window.location;
+    const { origin, pathname } = window.location;
     this.url = url
       || `${origin + pathname}/_/service/no.kidsakoder.app/graphql`;
   }
@@ -22,8 +22,8 @@ export default class Graphql {
 
     const requst = fetch(this.url, {
       method: 'post',
-      headers: { 'Content-Type': 'application/json', },
-      body: JSON.stringify({ query, }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query }),
       credentials: 'include',
     })
       .then(result => result.json());
