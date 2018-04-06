@@ -14,12 +14,7 @@
         "allowTemplateLiterals": true
       }
     ],
-    "max-len": [
-      "error",
-      {
-        "code": 80
-      }
-    ],
+    "max-len": [ "error", { "code": 80 } ],
     "comma-dangle": [
       "error",
       {
@@ -30,22 +25,9 @@
         "functions": "ignore"
       }
     ],
-    "indent": [
-      "error",
-      2
-    ],
-    "array-element-newline": [
-      "error",
-      {
-        "minItems": 3
-      }
-    ],
-    "array-bracket-newline": [
-      "error",
-      {
-        "minItems": 3
-      }
-    ],
+    "indent": [ "error", 2 ],
+    "array-element-newline": [ "error", { "minItems": 3 } ],
+    "array-bracket-newline": [ "error", { "minItems": 3 } ],
     "no-underscore-dangle": "off",
     "no-plusplus": "off",
     "react/prop-types": "off",
@@ -57,10 +39,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [ ".js", ".jsx" ]
       }
     ]
   },
