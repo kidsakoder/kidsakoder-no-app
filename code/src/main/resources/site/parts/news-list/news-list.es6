@@ -7,8 +7,8 @@ exports.get = () => {
 
   const component = portal.getComponent();
   const { config: { title, subtext } } = component;
-
   const newsElement = component.config['news-element'];
+
   const newsElements = [];
 
   let newsElementContentKeys = newsElement || [];
