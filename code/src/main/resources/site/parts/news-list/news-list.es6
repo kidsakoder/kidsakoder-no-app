@@ -6,7 +6,7 @@ exports.get = () => {
   const view = resolve('news-list.html');
 
   const component = portal.getComponent();
-  const { config: { title, subtext } } = component;
+  const { config: { title, subtitle } } = component;
   const newsElement = component.config['news-element'];
 
   const newsElements = [];
@@ -27,8 +27,8 @@ exports.get = () => {
   });
 
   const model = {
-    title: title || 'Missing title',
-    subtext: subtext || 'Missing subtext',
+    title: title || 'Add a title',
+    subtitle,
     newsElements,
   };
 
