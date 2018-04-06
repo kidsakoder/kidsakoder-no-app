@@ -52,6 +52,7 @@
     "require": true,
     "resolve": true,
     "location": true,
-    "app": true
+    "app": true,
+    "log": true
   }
 }
