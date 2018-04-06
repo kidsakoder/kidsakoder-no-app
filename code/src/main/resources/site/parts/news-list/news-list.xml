@@ -5,8 +5,8 @@
         <label>title</label>
         <occurrences minimum="1" maximum="1"/>
       </input>
-      <input type="TextLine" name="subtext">
-        <label>subtext</label>
+      <input type="TextLine" name="subtitle">
+        <label>subtitle</label>
         <occurrences minimum="1" maximum="1"/>
       </input>
       <input type="ContentSelector" name="news-element">
