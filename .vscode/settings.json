@@ -3,7 +3,9 @@
     "[javascript]": {
         "editor.formatOnSave": false
     },
+    "[json]": {
+        "editor.formatOnSave": false
+    },
     "eslint.autoFixOnSave": true,
-    "eslint.alwaysShowStatus": true,
-    "files.autoSave": "onFocusChange"
+    "eslint.alwaysShowStatus": true
 }
