@@ -14,7 +14,9 @@ exports.get = () => {
   const newsElementTags = newsElementContent.data.tags;
   const newsElementCaption = newsElementContent.data.caption;
   const newsElementPreface = newsElementContent.data.preface;
-  const newsElementBody = newsElementContent.data.body;
+  const newsElementBody = portal.processHtml({
+    value: newsElementContent.data.body,
+  });
 
   const model = {
     name: newsElementName,
