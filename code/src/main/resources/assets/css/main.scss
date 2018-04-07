@@ -1,13 +1,16 @@
-// Change defaults
-@import 'common/normalize.scss';
+// Base selector styles and mixins
+@import 'base/_normalize.scss';
+@import 'base/_media.scss';
+@import 'base/_button.scss';
 
-// Common styling
-@import 'common/media.scss';
-@import 'common/theme.scss';
-@import 'common/layout.scss';
-@import 'common/button.scss';
+// Specific themes and colors
+@import 'themes/_theme.scss';
 
-// Spesific styling
-@import 'defaultPage.scss';
-@import 'defaultPageButton.scss';
-@import 'events/default.scss';
+// Landing page
+@import 'pages/_landing-page.scss';
+@import 'layouts/_header.scss';
+@import 'layouts/_footer.scss';
+
+// Components
+@import 'components/_main-button.scss';
+@import 'components/_events.scss';
