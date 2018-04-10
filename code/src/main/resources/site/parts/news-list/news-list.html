@@ -1,7 +1,11 @@
 <div role="main">
     <h2 class="preface" data-th-text="${title}"></h2>
-    <h3 class="preface" data-th-text="${subtext}"></h3>
-    <div data-th-each="newsElement : ${newsElements}">
-        <p data-th-text="${newsElement.name}"></p>
+    <div th:if="${subtitle}">
+        <h3 class="preface" data-th-text="${subtitle}"></h3>
+    </div>
+    <div th:if="${newsElements}">
+        <div data-th-each="newsElement : ${newsElements}">
+            <p data-th-text="${newsElement.name}"></p>
+        </div>
     </div>
 </div>
