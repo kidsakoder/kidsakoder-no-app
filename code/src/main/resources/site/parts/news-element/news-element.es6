@@ -17,6 +17,10 @@ exports.get = () => {
   const newsElementBody = portal.processHtml({
     value: newsElementContent.data.body,
   });
+  const newsElementImage = portal.imageUrl({
+    id: newsElementContent.data.image,
+    scale: 'block(250, 250)',
+  });
 
   const model = {
     name: newsElementName,
@@ -24,6 +28,7 @@ exports.get = () => {
     caption: newsElementCaption,
     preface: newsElementPreface,
     body: newsElementBody,
+    image: newsElementImage,
   };
 
   return {
