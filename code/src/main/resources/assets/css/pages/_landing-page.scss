@@ -1,26 +1,10 @@
+html {
+  width
+}
+
 body {
-  min-height: 100vh;
   display: flex;
   flex-flow: column nowrap;
-}
-
-.foot,
-.head,
-.main {
+  min-height: 100vh;
   width: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  @at-root .inner-wrapper {
-    margin: auto;
-    max-width: 1024px;
-    flex: 1 0 auto;
-  }
-}
-
-.main {
-  flex: 1 0 auto;
-
-  .inner-wrapper {
-    padding: 32px 16px;
-  }
 }

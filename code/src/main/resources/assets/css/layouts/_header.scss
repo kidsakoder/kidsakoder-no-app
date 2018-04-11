@@ -1,20 +1,3 @@
 .head {
-/*    flex-basis: (100vw * 540 / 1920);
-    @include mobile {
-      flex-basis: ($mobile-to-tablet-width * 540 / 1920);
-    }
-    @include desktop {
-      flex-basis: ($tablet-to-desktop-width * 540 / 1920);
-    }*/
-
     background-color: $head-color;
-  
-    .inner-wrapper {
-      max-width: 100%;
-      margin: 0;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center center;
-    }
-
-  }
+}
