@@ -1,5 +1,11 @@
 .foot {
     background-color: $foot-color;
-    position: absolute;
-    bottom: 0;
-  }
+
+    #sponsors {
+        width: 100%;
+      }
+    
+    #sponsors a img{
+        width: 100%;
+    }
+}
