@@ -4,7 +4,7 @@
     <form>
 
         <!--
-        Fin ut hvordan man legger til forfattere
+        Finn ut hvordan man legger til forfattere
         <input name="authors" type="ContentSelector">
             <label>Forfatter(e)</label>
             <help-text>Legg til forfattere fra drop down menyen</help-text>

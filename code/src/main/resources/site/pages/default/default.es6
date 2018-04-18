@@ -1,5 +1,6 @@
 import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/xp/thymeleaf';
+import * as menu from '/lib/enonic/menu';
 
 const views = {
   defaultview: resolve('default.html'),
@@ -22,7 +23,9 @@ exports.get = () => {
     scale: 'block(800, 200)',
   });
 
-  const header = thymeleaf.render(views.header);
+  const header = thymeleaf.render(views.header, {
+    menuItems: menu.getMenuTree(1),
+  });
   const footer = thymeleaf.render(views.footer);
 
   // Prepare the model that will be passed to the view
@@ -31,7 +34,7 @@ exports.get = () => {
     headerHtml: portal.processHtml({
       value: `
 <div
-  class="inner-wrapper"
+  class="inner-wrapper row center-xs start-sm"
   style="background-image: url(${image})"
 >${header}</div>`,
     }),

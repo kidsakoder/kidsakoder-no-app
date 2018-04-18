@@ -5,7 +5,9 @@
     </div>
     <div th:if="${newsElements}">
         <div data-th-each="newsElement : ${newsElements}">
-            <p data-th-text="${newsElement.name}"></p>
+            <a
+                data-th-href="${portal.pageUrl({'_path=' + newsElement._path})}"
+                data-th-text="${newsElement.displayName}"></a>
         </div>
     </div>
 </div>
