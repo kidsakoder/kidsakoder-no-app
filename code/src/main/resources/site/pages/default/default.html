@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" />
-    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-    <title>Lær Kidsa Koding</title>
-  </head>
 
-  <body data-portal-component-type="page">
-    <header class="head" data-th-utext="${headerHtml}"></header>
-    <main class="main">
-      <div class="inner-wrapper" data-portal-region="main">
-        <div data-th-if="${mainRegion}" data-th-each="component : ${mainRegion.components}" data-th-remove="tag">
-          <div data-portal-component="${component.path}" data-th-remove="tag"></div>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" />
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+  <title>Lær Kidsa Koding</title>
+</head>
+
+<body data-portal-component-type="page">
+
+  <header class="head" data-th-utext="${headerHtml}"></header>
+
+  <main class="main">
+    <div class="inner-wrapper" data-portal-region="main">
+      <div data-th-if="${mainRegion}" data-th-each="component : ${mainRegion.components}" data-th-remove="tag">
+        <div data-portal-component="${component.path}" data-th-remove="tag"></div>
       </div>
-    </main>
+    </div>
+  </main>
 
+  <footer class="foot" data-th-utext="${footerHtml}"></footer>
 
-    <footer class="foot" data-th-utext="${footerHtml}"></footer>
+</body>
 
-  </body>
 </html>

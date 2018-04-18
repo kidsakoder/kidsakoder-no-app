@@ -34,7 +34,7 @@ exports.get = () => {
     headerHtml: portal.processHtml({
       value: `
 <div
-  class="inner-wrapper"
+  class="inner-wrapper row center-xs start-sm"
   style="background-image: url(${image})"
 >${header}</div>`,
     }),

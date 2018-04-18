@@ -17,19 +17,5 @@ $primary-yellow: nth($yellows, 2);
 
 // Colors
 $background-color: $primary-white;
-$headfoot-color: $primary-lightgrey;
-$menutext-color: $primary-grey;
-
-// CSS variables
-:root {
-    --background-color: #fff;
-}
-
-html, body {
-    background-color: $background-color;
-    background-color: var(--background-color);
-}
-
-.foot {
-  background-color: $headfoot-color;
-}
+$head-color: $primary-black;
+$foot-color: $primary-lightgrey;
