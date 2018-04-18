@@ -17,13 +17,8 @@ exports.get = () => {
   }
 
   newsElementContentKeys.forEach(newsElementKey => {
-    const newsElementContent = content.get({ key: newsElementKey });
-    // Her hentes ting ut
-    const newsElementName = newsElementContent.displayName;
-
-    newsElements.push({
-      name: newsElementName,
-    });
+    const { displayName, _id, _path } = content.get({ key: newsElementKey });
+    newsElements.push({ displayName, _id, _path });
   });
 
   const model = {

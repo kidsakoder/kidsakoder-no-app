@@ -1,34 +1,28 @@
 import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/xp/thymeleaf';
-import * as content from '/lib/xp/content';
 
 exports.get = () => {
   const view = resolve('news-element.html');
 
-  const component = portal.getComponent();
-  const newsElement = component.config['news-element'];
+  const content = portal.getContent();
 
-  const newsElementContent = content.get({ key: newsElement });
-  // Her hentes ting ut
-  const newsElementName = newsElementContent.displayName;
-  const newsElementTags = newsElementContent.data.tags;
-  const newsElementCaption = newsElementContent.data.caption;
-  const newsElementPreface = newsElementContent.data.preface;
-  const newsElementBody = portal.processHtml({
-    value: newsElementContent.data.body,
+  const name = content.displayName;
+  const { data: { tags, caption, preface } } = content;
+  const body = portal.processHtml({
+    value: content.data.body,
   });
-  const newsElementImage = portal.imageUrl({
-    id: newsElementContent.data.image,
+  const image = portal.imageUrl({
+    id: content.data.image,
     scale: 'block(250, 250)',
   });
 
   const model = {
-    name: newsElementName,
-    tags: newsElementTags,
-    caption: newsElementCaption,
-    preface: newsElementPreface,
-    body: newsElementBody,
-    image: newsElementImage,
+    name,
+    tags,
+    caption,
+    preface,
+    body,
+    image,
   };
 
   return {
