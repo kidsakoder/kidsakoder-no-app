@@ -6,18 +6,18 @@ exports.get = () => {
 
   const content = portal.getContent();
 
-  const name = content.displayName;
+  const title = content.displayName;
   const { data: { tags, caption, preface } } = content;
   const body = portal.processHtml({
     value: content.data.body,
   });
   const image = portal.imageUrl({
     id: content.data.image,
-    scale: 'block(250, 250)',
+    scale: 'block(768, 360)',
   });
 
   const model = {
-    name,
+    title,
     tags,
     caption,
     preface,
