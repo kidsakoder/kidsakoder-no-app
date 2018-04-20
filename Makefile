@@ -1,4 +1,4 @@
-.PHONY: start stop clean down restart build init
+.PHONY: start stop clean down restart build init logs
 
 init:
 	@./scripts/init.sh
@@ -12,5 +12,11 @@ start:
 restart:
 	@./scripts/redeploy.sh
 
-clean: stop
+clean:
 	@docker-compose rm --force
+
+stop:
+	@./scripts/stop.sh
+
+logs:
+	@./scripts/logs.sh
