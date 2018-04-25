@@ -18,4 +18,9 @@ $primary-yellow: nth($yellows, 2);
 // Colors
 $background-color: $primary-white;
 $head-color: $primary-black;
+$main-color: $primary-grey;
 $foot-color: $primary-lightgrey;
+$article-title-color: nth($yellows, 1);
+
+$font-monospace: 'Source Code Pro', monospace;
+$font-text: 'Source Sans Pro', sans-serif;
