@@ -1,0 +1,58 @@
+.article {
+  text-align: left;
+  padding: 64px 16px;
+  color: $main-color;
+}
+
+.article-title {
+  font-family: $font-monospace;
+  font-weight: normal;
+  color: $article-title-color;
+  max-width: 768px;
+  margin: 42px auto;
+  font-size: 4.5em;
+  letter-spacing: 1px;
+}
+
+.article-preface {
+  font-weight: bold;
+  font-family: $font-monospace;
+  font-size: 1.4em;
+  max-width: 640px;
+  margin: auto;
+  margin-top: 64px;
+  line-height: 1.8;
+}
+
+.article-image-container {
+  margin: 64px -16px 0 -16px;
+
+  .article-image {
+    width: 100%;
+    max-width: 768px;
+  }
+}
+
+.article-caption {
+  font-size: .8em;
+  max-width: 640px;
+  margin: 8px auto;
+}
+
+.article-body {
+  max-width: 640px;
+  margin: 64px auto;
+  line-height: 1.5;
+  font-family: $font-text;
+  font-size: 1.1em;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 32px;
+    font-family: $font-monospace;
+    color: $article-title-color;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

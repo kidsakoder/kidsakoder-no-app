@@ -1,7 +1,9 @@
-<div role="main">
-    <p class="preface" data-th-text="${name}"></p>
-    <p class="preface" data-th-text="${tags}"></p>
-    <p class="preface" data-th-text="${caption}"></p>
-    <p class="preface" data-th-text="${preface}"></p>
-    <p class="preface" data-th-utext="${body}"></p>
+<div role="main" class="article">
+    <h1 class="article-title" data-th-text="${title}"></h1>
+    <p class="article-preface" data-th-text="${preface}"></p>
+    <div class="article-image-container">
+        <img class="article-image" data-th-src="${image}"/>
+    </div>
+    <p class="article-caption" data-th-text="${caption}"></p>
+    <div class="article-body" data-th-utext="${body}"></div>
 </div>

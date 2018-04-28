@@ -2,8 +2,11 @@ body {
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-}
-
-main {
+  padding: 0 1rem;
   min-height: 100vh;
+  font-family: $font-text;
+
+  .head, .main, .foot {
+    margin: 0 -1rem;
+  }
 }
