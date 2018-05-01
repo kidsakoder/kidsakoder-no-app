@@ -16,12 +16,18 @@ class Events extends React.Component {
     this.client.query(
       {
         contentType: 'event',
-        query: 'displayName',
+        query: 'displayName dataAsJson',
       },
       data => {
+        const events = data.data.guillotine.query.map(
+          e => Object.assign({}, JSON.parse(e.dataAsJson), {
+            displayName: e.displayName,
+          })
+        );
+
         this.setState(
           Object.assign({}, this.state, {
-            events: data.data.guillotine.query,
+            events,
           })
         );
       }
@@ -40,14 +46,19 @@ class Events extends React.Component {
 
   render() {
     const events = this.state.events.map((e, i) => {
-      const style = {
-        backgroundColor: 'red',
-      };
+      const tags = typeof e.tags === 'object'
+        ? e.tags.map((f, j) => <span key={j}>{f}</span>)
+        : <span>{e.tags}</span>
 
       return (
-        <button key={i} onClick={this.click} style={style}>
-          {e.displayName}
-        </button>
+        <div key={i}>
+          <h3>{e.displayName}</h3>
+          <button onClick={this.click}>
+            {e.displayName}
+          </button>
+          {tags}
+          <div dangerouslySetInnerHTML={{__html: e.body}} />
+        </div>
       );
     });
 
