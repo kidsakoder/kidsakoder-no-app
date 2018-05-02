@@ -34,6 +34,7 @@
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "import/no-absolute-path": "off",
+    "react/no-danger": "off",
     "react/no-array-index-key": "off",
     "react/prefer-stateless-function": "off",
     "react/jsx-filename-extension": [
