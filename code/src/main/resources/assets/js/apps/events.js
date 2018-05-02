@@ -10,18 +10,20 @@ class Events extends React.Component {
     this.state = {
       events: [],
       selectedEvent: null,
+      rootUrl: document.currentScript.getAttribute('root') || '/',
     }
 
     this.client = new Graphql();
     this.client.query(
       {
         contentType: 'event',
-        query: 'displayName dataAsJson',
+        query: 'displayName dataAsJson _path',
       },
       data => {
         const events = data.data.guillotine.query.map(
           e => Object.assign({}, JSON.parse(e.dataAsJson), {
             displayName: e.displayName,
+            path: e._path,
           })
         );
 
@@ -52,12 +54,12 @@ class Events extends React.Component {
 
       return (
         <div key={i}>
-          <h3>{e.displayName}</h3>
+          <h3><a href={this.state.rootUrl + e.path}>{e.displayName}</a></h3>
           <button onClick={this.click}>
             {e.displayName}
           </button>
           {tags}
-          <div dangerouslySetInnerHTML={{__html: e.body}} />
+          <div dangerouslySetInnerHTML={{ __html: e.body }} />
         </div>
       );
     });
