@@ -10,6 +10,7 @@ class Events extends React.Component {
     this.state = {
       events: [],
       selectedEvent: null,
+      mapIsShown: !!document.querySelector('.map'),
       rootUrl: document.currentScript.getAttribute('root') || '/',
     }
 
@@ -38,10 +39,10 @@ class Events extends React.Component {
     this.click = this.click.bind(this);
   }
 
-  click(evt) {
+  click(eventName) {
     this.setState(
       Object.assign({}, this.state, {
-        selectedEvent: evt.target.innerHTML,
+        selectedEvent: eventName,
       })
     );
   }
@@ -49,17 +50,19 @@ class Events extends React.Component {
   render() {
     const events = this.state.events.map((e, i) => {
       const tags = typeof e.tags === 'object'
-        ? e.tags.map((f, j) => <span key={j}>{f}</span>)
+        ? e.tags.map((f, j) => <span key={j}>{f} </span>)
         : <span>{e.tags}</span>
 
       return (
         <div key={i}>
           <h3><a href={this.state.rootUrl + e.path}>{e.displayName}</a></h3>
-          <button onClick={this.click}>
-            {e.displayName}
-          </button>
           {tags}
-          <div dangerouslySetInnerHTML={{ __html: e.body }} />
+          {
+            this.state.mapIsShown &&
+            <button onClick={() => this.click(e.displayName)}>
+              Vis på kart
+            </button>
+          }
         </div>
       );
     });
