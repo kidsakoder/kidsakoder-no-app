@@ -12,7 +12,7 @@ class Events extends React.Component {
       selectedEvent: null,
       mapIsShown: !!document.querySelector('.map'),
       rootUrl: document.currentScript.getAttribute('root') || '/',
-    }
+    };
 
     this.client = new Graphql();
     this.client.query(
@@ -51,7 +51,7 @@ class Events extends React.Component {
     const events = this.state.events.map((e, i) => {
       const tags = typeof e.tags === 'object'
         ? e.tags.map((f, j) => <span key={j}>{f} </span>)
-        : <span>{e.tags}</span>
+        : <span>{e.tags}</span>;
 
       return (
         <div key={i}>
