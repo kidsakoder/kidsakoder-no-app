@@ -2,7 +2,6 @@
   <h2 class="preface" data-th-text="${title}"></h2>
   <div th:if="${subtitle}">
     <h3 class="preface" data-th-text="${subtitle}"></h3>
-    <h3 class="preface" data-th-text="${len}"></h3>
   </div>
   <div th:if="${newsElementList}">
     <div data-th-each="newsElement : ${newsElementList}">

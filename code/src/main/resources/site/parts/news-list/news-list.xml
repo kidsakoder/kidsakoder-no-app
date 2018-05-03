@@ -21,6 +21,7 @@
           <items>
             <input type="Long" name="newsCount">
               <label>Velg antall artikler (0 er alle)</label>
+              <default>5</default>
             </input>
           </items>
         </option>

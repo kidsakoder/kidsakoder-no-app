@@ -11,19 +11,38 @@ exports.get = () => {
     config: {
       title,
       subtitle,
-      checkOptionSet: {
-        _selected = 'showLatest',
-        newsElementsChecked: {
-          newsElements = [],
-        },
-        showLatest: {
-          newsCount = 100,
-        },
-      },
+      articleListOptions = {},
     },
   } = component;
 
+  const {
+    _selected = '',
+    newsElementsChecked = {},
+    showLatest = {},
+  } = articleListOptions;
+
+  const { newsElements = [] } = newsElementsChecked;
+  const { newsCount = 100 } = showLatest;
+
   const newsElementList = [];
+
+  const isPublished = (publish) => {
+    let published = false;
+
+    if ('from' in publish) {
+      if (new Date() > new Date(publish.from)) {
+        published = true;
+      }
+    }
+
+    if ('to' in publish) {
+      if (new Date() < new Date(publish.to)) {
+        published = true;
+      }
+    }
+
+    return published;
+  }
 
   if (_selected === 'showLatest') {
 
@@ -39,9 +58,10 @@ exports.get = () => {
 
     // Loop through the contents and extract the needed data
     for (let i = 0; i < hits.length; i++) {
-      const newsElement = {};
-      newsElement.name = hits[i].displayName;
-      newsElementList.push(newsElement);
+      const { displayName, _id, _path, publish } = hits[i];
+      if (isPublished(publish)) {
+        newsElementList.push({ displayName, _id, _path });
+      }
     }
   } else if (_selected === 'newsElementsChecked') {
     let newsElementContentKeys = newsElements || [];
@@ -50,16 +70,23 @@ exports.get = () => {
     }
 
     newsElementContentKeys.forEach(newsElementKey => {
-      const { displayName, _id, _path } = content.get({ key: newsElementKey });
-      newsElementList.push({ displayName, _id, _path });
+      const {
+        displayName,
+        _id,
+        _path,
+        publish,
+      } = content.get({ key: newsElementKey });
+
+      if (isPublished(publish)) {
+        newsElementList.push({ displayName, _id, _path });
+      }
     });
   }
 
   const model = {
-    title: title || 'Add a title',
+    title: title || 'Siste nyheter',
     subtitle,
     newsElementList,
-    len: JSON.stringify(component.config),
   };
 
   return {
