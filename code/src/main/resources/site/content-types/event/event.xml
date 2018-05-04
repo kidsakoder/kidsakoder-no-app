@@ -2,6 +2,7 @@
     <display-name>Events</display-name>
     <super-type>base:structured</super-type>
     <form>
+        <!--
         <input name="authors" type="ContentSelector">
             <label>Forfattere</label>
             <occurrences minimum="0" maximum="0"/>
@@ -10,20 +11,22 @@
                 <allow-content-type>person</allow-content-type>
             </config>
         </input>
+        -->
         <input name="tags" type="Tag">
             <label>Emneknagger</label>
-            <occurrences minimum="0" maximum="3"/>
+            <help-text>Legg til relevante nøkkelord</help-text>
+            <occurrences minimum="0" maximum="0"/>
             <config/>
         </input>
         <field-set name="content">
             <label>Oppslagsbilde</label>
             <items>
                 <input name="image" type="ImageSelector">
-                    <label>Oppslagsbilde</label>
+                    <label>Hovedbilde til arrangementet</label>
                     <occurrences minimum="0" maximum="1"/>
                 </input>
                 <input name="caption" type="TextLine">
-                    <label>Bildetekst</label>
+                    <label>Beskrivelse til hovedbildet</label>
                     <occurrences minimum="0" maximum="1"/>
                 </input>
             </items>

@@ -1,13 +1,13 @@
 <div role="main">
-    <h2 class="preface" data-th-text="${title}"></h2>
-    <div th:if="${subtitle}">
-        <h3 class="preface" data-th-text="${subtitle}"></h3>
+  <h2 class="preface" data-th-text="${title}"></h2>
+  <div th:if="${subtitle}">
+    <h3 class="preface" data-th-text="${subtitle}"></h3>
+  </div>
+  <div th:if="${newsElementList}">
+    <div data-th-each="newsElement : ${newsElementList}">
+      <a
+        data-th-href="${portal.pageUrl({'_path=' + newsElement._path})}"
+        data-th-text="${newsElement.displayName}"></a>
     </div>
-    <div th:if="${newsElements}">
-        <div data-th-each="newsElement : ${newsElements}">
-            <a
-                data-th-href="${portal.pageUrl({'_path=' + newsElement._path})}"
-                data-th-text="${newsElement.displayName}"></a>
-        </div>
-    </div>
+  </div>
 </div>

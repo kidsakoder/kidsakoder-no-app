@@ -1,20 +1,43 @@
 <part>
   <display-name>News-list</display-name>
   <config>
-      <input type="TextLine" name="title">
-        <label>title</label>
-        <occurrences minimum="1" maximum="1"/>
-      </input>
-      <input type="TextLine" name="subtitle">
-        <label>subtitle</label>
-        <occurrences minimum="1" maximum="1"/>
-      </input>
-      <input type="ContentSelector" name="news-element">
-          <label>news-element</label>
-          <occurrences minimum="1" maximum="0"/>
-          <config>
-              <allow-content-type>news-element</allow-content-type>
-          </config>
-      </input>
+    <input type="TextLine" name="title">
+      <label>Tittel</label>
+      <occurrences minimum="1" maximum="1"/>
+    </input>
+    <input type="TextLine" name="subtitle">
+      <label>Undertittel</label>
+      <occurrences minimum="1" maximum="1"/>
+    </input>
+    <option-set name="articleListOptions">
+      <label>Artikkelvisning</label>
+      <expanded>true</expanded>
+      <occurrences minimum="1" maximum="1"/>
+      <help-text>Dette er artikler som vil vises i listen</help-text>
+      <options minimum="1" maximum="1">
+        <option name="showLatest">
+          <label>Vis siste artikler</label>
+          <default>true</default>
+          <items>
+            <input type="Long" name="newsCount">
+              <label>Velg antall artikler (0 er alle)</label>
+              <default>5</default>
+            </input>
+          </items>
+        </option>
+        <option name="newsElementsChecked">
+          <label>Vis valgte artikler</label>
+          <items>
+            <input type="ContentSelector" name="newsElements">
+              <label>Velg minst en artikkel</label>
+              <occurrences minimum="1" maximum="0"/>
+              <config>
+                <allow-content-type>news-element</allow-content-type>
+              </config>
+            </input>
+          </items>
+        </option>
+      </options>
+    </option-set>
   </config>
 </part>
