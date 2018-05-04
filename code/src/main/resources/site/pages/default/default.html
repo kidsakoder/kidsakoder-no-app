@@ -8,6 +8,46 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" />
   <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
   <title>Lær Kidsa Koding</title>
+  <script defer>
+    /**
+     * This code will load scripts in edit mode for Enonic XP CMS when components are dragged into the page.
+     */
+    window.onload = function () {
+      let inEditMode;
+
+      const interval = setInterval(function () {
+        if (typeof inEditMode === 'undefined') {
+          inEditMode = !!document.querySelector('body').classList.contains('xp-page-editor-page-view');
+
+          if (!inEditMode) {
+            clearInterval(interval);
+          }
+        }
+
+        if (inEditMode) {
+          const scripts = document.querySelectorAll('.main script');
+
+          scripts.forEach(function (script) {
+            if (!script.classList.contains('launched')) {
+
+              // The trick is to create a new script instance.
+              let newScript = document.createElement('script');
+
+              for (const attr of script.attributes) {
+                newScript.setAttribute(attr.name, attr.value);
+              }
+
+              newScript.classList.add('launched');
+
+              // Then append the script to the same location as the previous script.
+              script.parentElement.appendChild(newScript);
+              script.parentElement.removeChild(script);
+            }
+          });
+        }
+      }, 1000);
+    };
+  </script>
 </head>
 
 <body data-portal-component-type="page">
