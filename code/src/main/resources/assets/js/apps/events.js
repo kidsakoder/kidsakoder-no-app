@@ -89,7 +89,7 @@ class Events extends React.Component {
 
     return (
       <React.Fragment>
-        <h3>Events</h3>
+        <h2>Events</h2>
         {events}
         <Map selectedEvent={this.state.selectedEvent} />
       </React.Fragment>
