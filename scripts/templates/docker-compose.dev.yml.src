@@ -5,3 +5,9 @@ exp:
     - ../code:/code
   command: /bin/bash -c "/launcher.sh dev & cd /code; ./gradlew deploy -t"
   user: "0:0"
+tests:
+  image: node:6
+  command: yarn test
+  volumes:
+    - ../code:/code
+  working_dir: /code
