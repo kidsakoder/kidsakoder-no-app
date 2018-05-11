@@ -7,8 +7,9 @@ const extractSASS = new ExtractTextPlugin(
 
 const getAppEntries = () => glob
   .sync('./src/main/resources/assets/{js/apps/*.js,css/main.scss}')
+  .filter(file => !/\.test\.js/.test(file))
   .reduce((acc, file) => {
-    const path = file.split('/src/main/resources/')[0];
+    const path = file.split('/src/main/resources/')[1];
     const output = `build/resources/main/${path.replace(/\.js$/, '.min.js')}`;
     acc[output] = file;
     return acc;
@@ -28,7 +29,7 @@ module.exports = {
       use: {
         loader: 'babel-loader',
         options: {
-          presets: ['babel-preset-env'],
+          presets: ['babel-preset-env', 'babel-preset-react'],
         },
       },
     }, {
@@ -42,5 +43,5 @@ module.exports = {
       }),
     }],
   },
-  plugins: [extractSASS],
+  plugins: [ extractSASS ],
 }
