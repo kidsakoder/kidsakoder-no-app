@@ -12,8 +12,11 @@ start:
 restart:
 	@./scripts/redeploy.sh
 
+test:
+	@./scripts/tests.sh
+
 clean:
-	@docker-compose rm --force
+	@./scripts/clean.sh
 
 stop:
 	@./scripts/stop.sh
