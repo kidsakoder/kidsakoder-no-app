@@ -10,20 +10,22 @@ export default class MapPortal extends Component {
       mapElement: document.querySelector('.map'),
     };
 
-    if (this.state.mapElement) {
-      props.hasLoaded();
-    }
+    props.hasLoaded();
   }
 
   render() {
     const mapElement = this.state.mapElement || document.querySelector('.map');
 
     if (mapElement) {
+      let selectedPosition = null;
+      if (this.props.selectedEvent && 'coord' in this.props.selectedEvent) {
+        selectedPosition = this.props.selectedEvent.coord;
+      }
+
       return createPortal((
         <Fragment>
           <h2>Kart</h2>
-          <p>{this.props.selectedEvent}</p>
-          <Map markers={[]} />
+          <Map markers={this.props.markers} position={selectedPosition} />
         </Fragment>
       ), mapElement);
     }

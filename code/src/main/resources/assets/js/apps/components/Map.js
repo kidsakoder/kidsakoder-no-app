@@ -32,17 +32,18 @@ export default class MapPortal extends Component {
   render() {
     const position = this.state.position || [63.4, 10.4];
     const markers = this.props.markers.map((marker, i) => (
-      <Marker key={i} position={marker.position}>
+      <Marker key={i} position={marker.coord} minWidth={120}>
         <Popup>
           <span>
-            Dette er et event {marker.title}
+            <h2>{marker.name}</h2>
+            @{marker.locationName}
           </span>
         </Popup>
       </Marker>
     ));
 
     return (
-      <LeafletMap center={position} zoom={13} style={{
+      <LeafletMap center={position} zoom={10} style={{
         width: '100%',
         height: '200px',
       }}>
