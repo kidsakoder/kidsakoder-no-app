@@ -30,6 +30,7 @@
     "array-bracket-newline": [ "error", { "minItems": 3 } ],
     "no-underscore-dangle": "off",
     "no-plusplus": "off",
+    "class-methods-use-this": "off",
     "react/prop-types": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",

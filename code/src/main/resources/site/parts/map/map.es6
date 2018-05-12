@@ -8,5 +8,8 @@ exports.get = request => {
 
   return {
     body: thymeleaf.render(view, { request, content, component }),
+    pageContributions: {
+      headEnd: ['<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />'],
+    },
   };
 };
