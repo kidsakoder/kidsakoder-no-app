@@ -28,10 +28,14 @@ export default class EventList extends React.Component {
     return this.state.events.filter(e => e.published);
   }
 
-  click(eventName) {
+  click(event) {
     this.setState(
       Object.assign({}, this.state, {
-        selectedEvent: eventName,
+        selectedEvent: {
+          name: event.displayName,
+          coord: event.locationParsed,
+          locationName: event.locationName,
+        },
       })
     );
   }
@@ -54,9 +58,12 @@ export default class EventList extends React.Component {
         }
       }
 
-      return Object.assign({}, JSON.parse(e.dataAsJson), {
+      const dataParsed = JSON.parse(e.dataAsJson);
+
+      return Object.assign({}, dataParsed, {
         displayName: e.displayName,
         path: e._path,
+        locationParsed: this.parseCoordinates(dataParsed.location),
         published,
         publish: e.publish,
       })
@@ -67,6 +74,11 @@ export default class EventList extends React.Component {
     this.setState(Object.assign({}, this.state, {
       mapIsShown: true,
     }));
+  }
+
+  parseCoordinates(coords) {
+    const [ lat = '0', lng = '0' ] = (coords || '0,0').split(',');
+    return [ parseFloat(lat), parseFloat(lng) ]
   }
 
   render() {
@@ -84,13 +96,19 @@ export default class EventList extends React.Component {
             {tags}
             {
               this.state.mapIsShown &&
-              <button onClick={() => this.click(e.displayName)}>
+              <button onClick={() => this.click(e)}>
                 Vis på kart
               </button>
             }
           </div>
         );
       });
+
+    const markers = this.getEvents().map(event => ({
+      name: event.displayName,
+      coord: event.locationParsed,
+      locationName: event.locationName,
+    }));
 
     let MapPortal = null;
     if (this.props.mapPortal) {
@@ -106,6 +124,7 @@ export default class EventList extends React.Component {
         <MapPortal
           hasLoaded={this.mapHasLoadedHandler}
           selectedEvent={this.state.selectedEvent}
+          markers={markers}
         />
       </div>
     );
