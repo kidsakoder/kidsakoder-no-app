@@ -4,19 +4,24 @@ import * as thymeleaf from '/lib/xp/thymeleaf';
 exports.get = () => {
   const view = resolve('news-element.html');
 
-  const content = portal.getContent();
-
   const {
-    data: { tags, caption, preface },
+    data: {
+      tags,
+      caption,
+      preface,
+      body: bodyStr,
+      image: imageId,
+      hasCommentSection,
+    },
     displayName: title,
-  } = content;
+  } = portal.getContent();
 
   const body = portal.processHtml({
-    value: content.data.body,
+    value: bodyStr,
   });
 
   const image = portal.imageUrl({
-    id: content.data.image,
+    id: imageId,
     scale: 'block(768, 360)',
   });
 
@@ -27,6 +32,7 @@ exports.get = () => {
     preface,
     body,
     image,
+    hasCommentSection,
   };
 
   return {
