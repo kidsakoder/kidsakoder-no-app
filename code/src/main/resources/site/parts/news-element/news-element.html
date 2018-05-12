@@ -6,7 +6,7 @@
     </div>
     <p class="article-caption" data-th-text="${caption}"></p>
     <div class="article-body" data-th-utext="${body}"></div>
-    <div data-th-if="${hasCommentSection}">
+    <div class="article-comments" data-th-if="${hasCommentSection}">
         <div id="graphcomment"></div>
         <script type="text/javascript">
         window.graphcomment_id = 'test-kidsakoder-no';
