@@ -6,3 +6,7 @@
 .react-app:empty:after {
     content: 'Din nettleser må aktivere JavaScript for å kjøre denne applikasjonen...';
 }
+
+.selected {
+    background-color: rgba(0, 0, 0, .1);
+}
