@@ -13,6 +13,7 @@ export default class EventList extends React.Component {
     };
 
     this.click = this.click.bind(this);
+    this.selectEvent = this.selectEvent.bind(this);
     this.mapHasLoadedHandler = this.mapHasLoadedHandler.bind(this);
   }
 
@@ -83,6 +84,16 @@ export default class EventList extends React.Component {
     return [ parseFloat(lat), parseFloat(lng) ]
   }
 
+  selectEvent(id) {
+    const event = this.getEvents().filter(e => e.id === id)[0];
+    this.click({
+      id: event.id,
+      displayName: event.name,
+      locationParsed: event.locationParsed,
+      locationName: event.locationName,
+    });
+  }
+
   render() {
     const events = this.getEvents()
       .map((e, i) => {
@@ -107,6 +118,7 @@ export default class EventList extends React.Component {
       });
 
     const markers = this.getEvents().map(event => ({
+      id: event.id,
       name: event.displayName,
       coord: event.locationParsed,
       locationName: event.locationName,
@@ -127,6 +139,7 @@ export default class EventList extends React.Component {
         <MapPortal
           hasLoaded={this.mapHasLoadedHandler}
           selectedEvent={this.state.selectedEvent}
+          selectEvent={this.selectEvent}
           markers={markers}
         />
       </div>

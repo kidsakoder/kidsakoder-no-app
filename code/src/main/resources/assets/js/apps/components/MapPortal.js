@@ -25,7 +25,11 @@ export default class MapPortal extends Component {
       return createPortal((
         <Fragment>
           <h2>Kart</h2>
-          <Map markers={this.props.markers} position={selectedPosition} />
+          <Map
+            markers={this.props.markers}
+            position={selectedPosition}
+            selectEvent={this.props.selectEvent}
+          />
         </Fragment>
       ), mapElement);
     }
