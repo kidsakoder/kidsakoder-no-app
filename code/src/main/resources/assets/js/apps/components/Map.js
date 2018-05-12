@@ -53,6 +53,7 @@ export default class MapPortal extends Component {
         position={marker.coord}
         minWidth={120}
         icon={marker.selected ? icons.greenIcon : icons.greyIcon}
+        onClick={() => this.props.selectEvent(marker.id)}
       >
         <Tooltip>
           <span>
