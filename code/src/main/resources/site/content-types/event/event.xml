@@ -2,13 +2,13 @@
     <display-name>Events</display-name>
     <super-type>base:structured</super-type>
     <form>
-        <!--
-        <input name="authors" type="ContentSelector">
-            <label>Forfattere</label>
+        <!-- This may be used in the furture when implementing multiple Code Club support.
+        <input name="organizers" type="ContentSelector">
+            <label>Arrangør(er)</label>
             <occurrences minimum="0" maximum="0"/>
             <config>
                 <relationship-type>system:reference</relationship-type>
-                <allow-content-type>person</allow-content-type>
+                <allow-content-type>organization</allow-content-type>
             </config>
         </input>
         -->
@@ -17,6 +17,19 @@
             <help-text>Legg til relevante nøkkelord</help-text>
             <occurrences minimum="0" maximum="0"/>
             <config/>
+        </input>
+        <input name="location" type="GeoPoint">
+            <label>Koordinater (bruk https://www.gps-coordinates.net/)</label>
+            <help>
+                Dette skal være latitude- og longetude-koordinater.
+                Du finner dette med å velge et punkt på https://www.gps-coordinates.net/
+                og kopiere verdien fra "Lat,Long" under "DD (decimal degrees)*".
+            </help>
+            <occurrences minimum="1" maximum="1"/>
+        </input>
+        <input name="locationName" type="TextLine">
+            <label>Navn på sted (f.eks. Opera, Oslo)</label>
+            <occurrences minimum="1" maximum="1"/>
         </input>
         <field-set name="content">
             <label>Oppslagsbilde</label>
