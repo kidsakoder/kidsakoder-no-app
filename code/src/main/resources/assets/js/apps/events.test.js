@@ -67,10 +67,37 @@ test('parsing JSON data correctly', t => {
   t.deepEqual(wrapper.instance().getEvents()[1].tags, ['xyxy', '2018']);
 });
 
-
 test('has correct URL path', t => {
   const wrapper = shallow(
     <EventList events={events} today={new Date(2018, 5, 10)} />
   );
   t.deepEqual(wrapper.instance().getEvents()[1].path, '/site/events/zzzzzz');
+});
+
+test('parsing coordinates 10,10 correctly', t => {
+  const wrapper = shallow(
+    <EventList events={events} />
+  );
+  t.deepEqual(wrapper.instance().parseCoordinates('10,10'), [10, 10]);
+});
+
+test('parsing coordinates 69.214142,10.21223 correctly', t => {
+  const wrapper = shallow(
+    <EventList events={events} />
+  );
+  t.deepEqual(
+    wrapper.instance().parseCoordinates('69.214142,10.21223'),
+    [69.214142, 10.21223]
+  );
+});
+
+
+test('parsing coordinates -69.214142,-10.21223 correctly', t => {
+  const wrapper = shallow(
+    <EventList events={events} />
+  );
+  t.deepEqual(
+    wrapper.instance().parseCoordinates('-69.214142,-10.21223'),
+    [-69.214142, -10.21223]
+  );
 });
