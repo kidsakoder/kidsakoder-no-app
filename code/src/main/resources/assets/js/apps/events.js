@@ -19,7 +19,7 @@ class Events extends Component {
     this.client.query(
       {
         contentType: 'event',
-        query: 'displayName dataAsJson _path publish { from to first }',
+        query: 'displayName dataAsJson _id _path publish { from to first }',
       },
       data => {
         this.setState(
