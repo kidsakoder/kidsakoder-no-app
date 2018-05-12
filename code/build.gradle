@@ -81,3 +81,9 @@ task webpack(type: NodeTask, dependsOn: 'npmInstall') {
 }
 
 jar.dependsOn += webpack
+
+/* Test React apps using ava */
+
+task ava(type: NodeTask) {
+    script = file('node_modules/ava/cli.js')
+}
