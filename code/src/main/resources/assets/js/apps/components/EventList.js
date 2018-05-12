@@ -102,9 +102,14 @@ export default class EventList extends React.Component {
             <span className="event-tag" key={j}>{f}</span>
           ))
           : <span className="event-tag">{e.tags}</span>;
+        
+        let classAppend = '';
+        if (e.id === (this.state.selectedEvent || {}).id || 0) {
+          classAppend = ' selected';
+        }
 
         return (
-          <div className="event-item" key={i}>
+          <div className={`event-item${classAppend}`} key={i}>
             <h3><a href={this.props.rootUrl + e.path}>{e.displayName}</a></h3>
             {tags}
             {
