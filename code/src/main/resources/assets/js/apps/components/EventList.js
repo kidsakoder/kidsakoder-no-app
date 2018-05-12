@@ -32,6 +32,7 @@ export default class EventList extends React.Component {
     this.setState(
       Object.assign({}, this.state, {
         selectedEvent: {
+          id: event.id,
           name: event.displayName,
           coord: event.locationParsed,
           locationName: event.locationName,
@@ -62,12 +63,13 @@ export default class EventList extends React.Component {
 
       return Object.assign({}, dataParsed, {
         displayName: e.displayName,
+        id: e._id,
         path: e._path,
         locationParsed: this.parseCoordinates(dataParsed.location),
         published,
         publish: e.publish,
-      })
-    })
+      });
+    });
   }
 
   mapHasLoadedHandler() {
@@ -108,6 +110,7 @@ export default class EventList extends React.Component {
       name: event.displayName,
       coord: event.locationParsed,
       locationName: event.locationName,
+      selected: event.id === (this.state.selectedEvent || {}).id || 0,
     }));
 
     let MapPortal = null;
