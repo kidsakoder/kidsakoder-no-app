@@ -10,6 +10,16 @@ export default class EventList extends React.Component {
         type: 'distance',
         asc: true,
       },
+      distanceDesc: {
+        key: 'locationParsed',
+        type: 'distance',
+        asc: false,
+      },
+      dateAsc: {
+        key: 'date',
+        type: 'date',
+        asc: true,
+      },
       dateDesc: {
         key: 'date',
         type: 'date',
@@ -281,6 +291,8 @@ export default class EventList extends React.Component {
         <select onChange={this.changeOrderHandler}>
           <option value="distanceAsc">Nærmeste arrangementer</option>
           <option value="dateDesc">Siste arrangementer</option>
+          <option value="dateAsc">Eldste arrangementer</option>
+          <option value="distanceDesc">Arrangementer lengst unna</option>
         </select>
         <div className="event-list">
           {events}
