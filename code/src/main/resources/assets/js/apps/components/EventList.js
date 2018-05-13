@@ -37,7 +37,7 @@ export default class EventList extends React.Component {
       sortBy: this.sortTypes.distanceAsc,
     };
 
-    this.click = this.click.bind(this);
+    this.displayMarkerOnMap = this.displayMarkerOnMap.bind(this);
     this.changeOrderHandler = this.changeOrderHandler.bind(this);
     this.mapHasLoadedHandler = this.mapHasLoadedHandler.bind(this);
     this.selectEvent = this.selectEvent.bind(this);
@@ -90,9 +90,9 @@ export default class EventList extends React.Component {
    * @returns {number} The squared distance between p and q on a sphere map.
    */
   getSphereSquare(p, q) {
-    const correctLng = lng => Math.cos(lng / 180 * Math.PI);
-    const np = [p[0], correctLng(p[1]) * p[1]];
-    const nq = [q[0], correctLng(q[1]) * q[1]];
+    const correctLng = lng => 1 / Math.cos(lng / 180 * Math.PI);
+    const np = [correctLng(p[0]) * p[0], p[1]];
+    const nq = [correctLng(q[0]) * q[0], q[1]];
 
     return this.getSquare(np, nq);
   }
