@@ -3,14 +3,32 @@ import { createPortal } from 'react-dom';
 import Map from './Map';
 
 export default class MapPortal extends Component {
-  constructor(props) {
+  constructor() {
     super();
 
     this.state = {
       mapElement: document.querySelector('.map'),
     };
 
-    props.hasLoaded();
+    this.hasLoaded = !!this.state.mapElement;
+  }
+
+  componentDidMount() {
+    if (!this.hasLoaded) {
+      let timeout;
+      const interval = setInterval(() => {
+        if (document.querySelector('.map')) {
+          clearInterval(interval);
+          clearTimeout(timeout);
+          this.hasLoaded = true;
+          this.props.hasLoaded();
+        }
+      }, 100);
+
+      timeout = setTimeout(() => {
+        clearInterval(interval);
+      }, 1000);
+    }
   }
 
   render() {
