@@ -91,7 +91,6 @@ test('parsing coordinates 69.214142,10.21223 correctly', t => {
   );
 });
 
-
 test('parsing coordinates -69.214142,-10.21223 correctly', t => {
   const wrapper = shallow(
     <EventList events={events} />
@@ -100,4 +99,19 @@ test('parsing coordinates -69.214142,-10.21223 correctly', t => {
     wrapper.instance().parseCoordinates('-69.214142,-10.21223'),
     [-69.214142, -10.21223]
   );
+});
+
+test('calculates correct distance of (0, 0) -> (0, 0)', t => {
+  const wrapper = shallow(<EventList />);
+  t.is(wrapper.instance().getDistance([0, 0], [0, 0]), 0);
+});
+
+test('calculates correct distance of (0, 0) -> (0, 1)', t => {
+  const wrapper = shallow(<EventList />);
+  t.is(wrapper.instance().getDistance([0, 0], [0, 1]), 1);
+});
+
+test('calculates correct distance of (3, 4) -> (-3, 12)', t => {
+  const wrapper = shallow(<EventList />);
+  t.is(wrapper.instance().getDistance([3, 4], [-3, 12]), 10);
 });
