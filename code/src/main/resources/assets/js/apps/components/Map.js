@@ -15,6 +15,7 @@ const createIcon = color => new L.Icon({
 const icons = {
   greyIcon: createIcon('grey'),
   greenIcon: createIcon('green'),
+  orangeIcon: createIcon('orange'),
 };
 
 export default class MapPortal extends Component {
@@ -23,6 +24,7 @@ export default class MapPortal extends Component {
 
     this.state = {
       position: props.position || this.getCurrentPosition(),
+      currPosition: null,
       markers: [],
     }
   }
@@ -41,6 +43,7 @@ export default class MapPortal extends Component {
       const position = [ latitude, longitude ];
       this.setState(Object.assign({}, this.state, {
         position,
+        currPosition: position,
       }));
     });
   }
@@ -69,6 +72,16 @@ export default class MapPortal extends Component {
         width: '100%',
         height: '320px',
       }}>
+        {
+          this.state.currPosition &&
+          <Marker position={this.state.currPosition} icon={icons.orangeIcon}>
+            <Tooltip>
+              <span>
+                <h3>Her er du</h3>
+              </span>
+            </Tooltip>
+          </Marker>
+        }
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
