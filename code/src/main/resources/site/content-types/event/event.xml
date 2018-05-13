@@ -20,11 +20,11 @@
         </input>
         <input name="location" type="GeoPoint">
             <label>Koordinater (bruk https://www.gps-coordinates.net/)</label>
-            <help>
+            <help-text>
                 Dette skal være latitude- og longetude-koordinater.
                 Du finner dette med å velge et punkt på https://www.gps-coordinates.net/
                 og kopiere verdien fra "Lat,Long" under "DD (decimal degrees)*".
-            </help>
+            </help-text>
             <occurrences minimum="1" maximum="1"/>
         </input>
         <input name="locationName" type="TextLine">
