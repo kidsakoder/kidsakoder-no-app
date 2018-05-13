@@ -47,8 +47,9 @@ export default class EventList extends React.Component {
    * is only needed to have the relative distances when comparing
    * values. Sort algorithms do not need an exact distance measure.
    * 
-   * @param {array} p Point p
-   * @param {array} q Point q
+   * @param {object[]} p Point p.
+   * @param {object[]} q Point q.
+   * @returns {number} The squared distance between p and q.
    */
   getSquare(p, q) {
     const dx = p[0] - q[0];
@@ -60,8 +61,9 @@ export default class EventList extends React.Component {
   /**
    * Find the ecluidean distance between two points.
    * 
-   * @param {array} p Point p
-   * @param {array} q Point q
+   * @param {object[]} p Point p.
+   * @param {object[]} q Point q.
+   * @returns {number} The distance between p and q.
    */
   getDistance(p, q) {
     return Math.sqrt(this.getSquare(p, q));
@@ -73,8 +75,9 @@ export default class EventList extends React.Component {
    * sorting algotithms and need to be fast and do not need exact
    * distances.
    * 
-   * @param {array} p Point p
-   * @param {array} q Point q
+   * @param {object[]} p Point p.
+   * @param {object[]} q Point q.
+   * @returns {number} The squared distance between p and q on a sphere map.
    */
   getSphereSquare(p, q) {
     const correctLng = lng => Math.cos(lng / 180 * Math.PI);
@@ -84,6 +87,9 @@ export default class EventList extends React.Component {
     return this.getSquare(np, nq);
   }
 
+  /**
+   * Filter and sort events correctly.
+   */
   getEvents() {
     const {
       events,
@@ -113,13 +119,23 @@ export default class EventList extends React.Component {
       .sort((a, b) => asc ? sort(a, b) : sort(b, a));
   }
 
+  /**
+   * Set state when changing what to sort by in dropdown list.
+   * 
+   * @param {object} evt A select on-change event.
+   */
   changeOrderHandler(evt) {
     this.setState(Object.assign({}, this.state, {
       sortBy: this.sortTypes[evt.target.value],
     }));
   }
 
-  click(event) {
+  /**
+   * When selecting an event from the list to display on the map.
+   * 
+   * @param {object} event An event object.
+   */
+  displayMarkerOnMap(event) {
     this.setState(
       Object.assign({}, this.state, {
         selectedEvent: {
@@ -132,6 +148,13 @@ export default class EventList extends React.Component {
     );
   }
 
+  /**
+   * Format events from the GraphQL API.
+   * 
+   * @param {object} events A list of events from GraphQL.
+   * @param {Date} [today=new Date()] Date to filter published articles by.
+   * @returns {object[]} Object with mapped events from the API.
+   */
   formatEvents(events, today = new Date()) {
     return events.map(e => {
       let published = true;
@@ -164,20 +187,35 @@ export default class EventList extends React.Component {
     });
   }
 
+  /**
+   * A callback function to tell if the map has loaded into a container.
+   */
   mapHasLoadedHandler() {
     this.setState(Object.assign({}, this.state, {
       mapIsShown: true,
     }));
   }
 
+  /**
+   * Convert a string format of coordinates into an array.
+   * 
+   * @param {string} coords Coordinates on format 'lat,lng'.
+   * @returns {object[]} Array with format [lat, lng].
+   */
   parseCoordinates(coords) {
     const [ lat = '0', lng = '0' ] = (coords || '0,0').split(',');
     return [ parseFloat(lat), parseFloat(lng) ]
   }
 
+  /**
+   * A function sent into the map component as a callback when
+   * a marker is selected.
+   * 
+   * @param {string} id An id from a marker.
+   */
   selectEvent(id) {
     const event = this.getEvents().filter(e => e.id === id)[0];
-    this.click({
+    this.displayMarkerOnMap({
       id: event.id,
       displayName: event.name,
       locationParsed: event.locationParsed,
@@ -185,6 +223,11 @@ export default class EventList extends React.Component {
     });
   }
 
+  /**
+   * A callback function from the map telling where the user is.
+   * 
+   * @param {object[]} currPosition Position on format [lat, lng].
+   */
   sendCurrentPosition(currPosition) {
     this.setState(Object.assign({}, this.state, {
       currPosition,
@@ -211,7 +254,7 @@ export default class EventList extends React.Component {
             {tags}
             {
               this.state.mapIsShown &&
-              <button onClick={() => this.click(e)}>
+              <button onClick={() => this.displayMarkerOnMap(e)}>
                 Vis på kart
               </button>
             }
