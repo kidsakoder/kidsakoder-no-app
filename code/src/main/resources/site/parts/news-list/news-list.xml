@@ -1,5 +1,5 @@
 <part>
-  <display-name>News-list</display-name>
+  <display-name>Nyhetsartikkel liste</display-name>
   <config>
     <input type="TextLine" name="title">
       <label>Tittel</label>

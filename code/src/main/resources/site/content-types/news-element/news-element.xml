@@ -1,5 +1,5 @@
 <content-type>
-    <display-name>Nyhets element</display-name>
+    <display-name>Nyhetsartikkel</display-name>
     <super-type>base:structured</super-type>
     <form>
 
