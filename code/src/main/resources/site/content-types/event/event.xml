@@ -31,6 +31,10 @@
             <label>Navn på sted (f.eks. Opera, Oslo)</label>
             <occurrences minimum="1" maximum="1"/>
         </input>
+        <input name="contactInfo" type="TextLine">
+            <label>Kontaktinformasjon (f.eks. mail)</label>
+            <occurrences minimum="0" maximum="1"/>
+        </input>
         <field-set name="content">
             <label>Oppslagsbilde</label>
             <items>
