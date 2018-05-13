@@ -44,26 +44,7 @@ exports.get = () => {
     return published;
   }
 
-  if (_selected === 'showLatest') {
-
-    // Get all the country contents (in the current site)
-    const result = content.query({
-      start: 0,
-      count: newsCount,
-      contentTypes: [`${app.name}:news-element`],
-      query: `_path LIKE '/content${site._path}/*'`,
-    });
-
-    const { hits } = result;
-
-    // Loop through the contents and extract the needed data
-    for (let i = 0; i < hits.length; i++) {
-      const { displayName, _id, _path, publish } = hits[i];
-      if (isPublished(publish)) {
-        newsElementList.push({ displayName, _id, _path });
-      }
-    }
-  } else if (_selected === 'newsElementsChecked') {
+  if (_selected === 'newsElementsChecked') {
     let newsElementContentKeys = newsElements || [];
     if (!(newsElementContentKeys instanceof Array)) {
       newsElementContentKeys = [newsElementContentKeys];
@@ -81,6 +62,24 @@ exports.get = () => {
         newsElementList.push({ displayName, _id, _path });
       }
     });
+  } else {
+    // Get all the country contents (in the current site)
+    const result = content.query({
+      start: 0,
+      count: newsCount,
+      contentTypes: [`${app.name}:news-element`],
+      query: `_path LIKE '/content${site._path}/*'`,
+    });
+
+    const { hits } = result;
+
+    // Loop through the contents and extract the needed data
+    for (let i = 0; i < hits.length; i++) {
+      const { displayName, _id, _path, publish } = hits[i];
+      if (isPublished(publish)) {
+        newsElementList.push({ displayName, _id, _path });
+      }
+    }
   }
 
   const model = {
