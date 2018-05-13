@@ -42,6 +42,14 @@ export default class EventList extends React.Component {
     }
   }
 
+  /**
+   * Find the squared distance between two points. Some times it
+   * is only needed to have the relative distances when comparing
+   * values. Sort algorithms do not need an exact distance measure.
+   * 
+   * @param {array} p Point p
+   * @param {array} q Point q
+   */
   getSquare(p, q) {
     const dx = p[0] - q[0];
     const dy = p[1] - q[1];
@@ -49,6 +57,12 @@ export default class EventList extends React.Component {
     return dx * dx + dy * dy;
   }
 
+  /**
+   * Find the ecluidean distance between two points.
+   * 
+   * @param {array} p Point p
+   * @param {array} q Point q
+   */
   getDistance(p, q) {
     return Math.sqrt(this.getSquare(p, q));
   }
