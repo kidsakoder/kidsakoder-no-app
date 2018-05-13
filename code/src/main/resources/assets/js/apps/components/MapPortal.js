@@ -47,6 +47,7 @@ export default class MapPortal extends Component {
             markers={this.props.markers}
             position={selectedPosition}
             selectEvent={this.props.selectEvent}
+            sendCurrentPosition={this.props.sendCurrentPosition}
           />
         </Fragment>
       ), mapElement);
