@@ -6,13 +6,23 @@ exports.get = () => {
 
   const content = portal.getContent();
 
-  const title = content.displayName;
-  const { data: { tags, caption } } = content;
+  const {
+    displayName: title,
+    data: {
+      tags,
+      caption,
+      bodyStr,
+      imageStr,
+      contactInfo,
+    },
+  } = content;
+
   const body = portal.processHtml({
-    value: content.data.body,
+    value: bodyStr,
   });
+
   const image = portal.imageUrl({
-    id: content.data.image,
+    id: imageStr,
     scale: 'block(768, 360)',
   });
 
@@ -22,6 +32,7 @@ exports.get = () => {
     caption,
     body,
     image,
+    contactInfo,
   };
 
   return {
