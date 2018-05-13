@@ -1,5 +1,5 @@
 <page>
-  <display-name>Default</display-name>
+  <display-name>Forside</display-name>
 
   <config>
     <input type="ImageSelector" name="image">
