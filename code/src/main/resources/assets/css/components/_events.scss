@@ -7,6 +7,18 @@
     content: 'Din nettleser må aktivere JavaScript for å kjøre denne applikasjonen...';
 }
 
-.selected {
-    background-color: rgba(0, 0, 0, .1);
+.event-item {
+    padding: 8px;
+
+    &.selected {
+        background-color: rgba(0, 0, 0, .1);
+    }
+
+    .event-tag {
+        font-size: .8em;
+        padding: 3px 6px;
+        margin: 3px;
+        background-color: rgba(0, 0, 0, .2);
+        border-radius: 3px;
+    }
 }
