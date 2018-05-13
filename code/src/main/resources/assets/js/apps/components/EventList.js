@@ -4,6 +4,19 @@ export default class EventList extends React.Component {
   constructor(props) {
     super();
 
+    this.sortTypes = {
+      distanceAsc: {
+        key: 'locationParsed',
+        type: 'distance',
+        asc: true,
+      },
+      dateDesc: {
+        key: 'date',
+        type: 'date',
+        asc: false,
+      },
+    }
+
     this.state = {
       events: props.events
         ? this.formatEvents(props.events, props.today)
@@ -11,17 +24,14 @@ export default class EventList extends React.Component {
       selectedEvent: null,
       mapIsShown: false,
       currPosition: props.currPosition || [0, 0],
-      sortBy: {
-        key: 'locationParsed',
-        type: 'distance',
-        asc: true,
-      },
+      sortBy: this.sortTypes.distanceAsc,
     };
 
     this.click = this.click.bind(this);
+    this.changeOrderHandler = this.changeOrderHandler.bind(this);
+    this.mapHasLoadedHandler = this.mapHasLoadedHandler.bind(this);
     this.selectEvent = this.selectEvent.bind(this);
     this.sendCurrentPosition = this.sendCurrentPosition.bind(this);
-    this.mapHasLoadedHandler = this.mapHasLoadedHandler.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -43,6 +53,23 @@ export default class EventList extends React.Component {
     return Math.sqrt(this.getSquare(p, q));
   }
 
+  /**
+   * Measure a squared distance on a flat map. Using squared distances
+   * as square roots are computationally expensive. This is used in
+   * sorting algotithms and need to be fast and do not need exact
+   * distances.
+   * 
+   * @param {array} p Point p
+   * @param {array} q Point q
+   */
+  getSphereSquare(p, q) {
+    const correctLng = lng => Math.cos(lng / 180 * Math.PI);
+    const np = [p[0], correctLng(p[1]) * p[1]];
+    const nq = [q[0], correctLng(q[1]) * q[1]];
+
+    return this.getSquare(np, nq);
+  }
+
   getEvents() {
     const {
       events,
@@ -58,8 +85,8 @@ export default class EventList extends React.Component {
     switch (type) {
     case 'distance':
       sort = (a, b) => (
-        this.getSquare(a[key], this.state.currPosition)
-        > this.getSquare(b[key], this.state.currPosition)
+        this.getSphereSquare(a[key], this.state.currPosition)
+        > this.getSphereSquare(b[key], this.state.currPosition)
       );
       break;
     default:
@@ -68,8 +95,14 @@ export default class EventList extends React.Component {
     }
 
     return events
-      .sort((a, b) => asc ? sort(a, b) : sort(b, a))
-      .filter(e => e.published);
+      .filter(e => e.published)
+      .sort((a, b) => asc ? sort(a, b) : sort(b, a));
+  }
+
+  changeOrderHandler(evt) {
+    this.setState(Object.assign({}, this.state, {
+      sortBy: this.sortTypes[evt.target.value],
+    }));
   }
 
   click(event) {
@@ -111,6 +144,7 @@ export default class EventList extends React.Component {
         path: e._path,
         locationParsed: this.parseCoordinates(dataParsed.location),
         published,
+        date: (e.publish || {}).from || null,
         publish: e.publish,
       });
     });
@@ -151,7 +185,7 @@ export default class EventList extends React.Component {
             <span className="event-tag" key={j}>{f}</span>
           ))
           : <span className="event-tag">{e.tags}</span>;
-        
+
         let classAppend = '';
         if (e.id === (this.state.selectedEvent || {}).id || 0) {
           classAppend = ' selected';
@@ -187,6 +221,10 @@ export default class EventList extends React.Component {
     return (
       <div className="EventList">
         <h2 className="event-title">Arrangementer</h2>
+        <select onChange={this.changeOrderHandler}>
+          <option value="distanceAsc">Nærmeste arrangementer</option>
+          <option value="dateDesc">Siste arrangementer</option>
+        </select>
         <div className="event-list">
           {events}
         </div>
