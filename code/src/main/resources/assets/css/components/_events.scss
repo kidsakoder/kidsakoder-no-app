@@ -11,14 +11,19 @@
     padding: 8px;
 
     &.selected {
-        background-color: rgba(0, 0, 0, .1);
+        background-color: $selected-from-map-color;
+
+        .event-tag {
+            background-color: $primary-green;
+            color: $primary-white;
+        }
     }
 
     .event-tag {
         font-size: .8em;
         padding: 3px 6px;
         margin: 3px;
-        background-color: rgba(0, 0, 0, .2);
+        background-color: $primary-lightgrey;
         border-radius: 3px;
     }
 }
