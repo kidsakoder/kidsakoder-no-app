@@ -49,14 +49,14 @@ repositories {
 /* Task enabling es6 transpiling for Enonic */
 
 task babel(type: NodeTask, dependsOn: 'npmInstall') {
-    script = file('node_modules/.bin/babel')
+    script = file('node_modules/@babel/cli/bin/babel.js')
     args = [
         "-d",
         "$buildDir/resources/main",
         "-x",
         ".es6",
         "--presets",
-        "env",
+        "@babel/env",
         "src/main/resources"
     ]
 
@@ -81,3 +81,9 @@ task webpack(type: NodeTask, dependsOn: 'npmInstall') {
 }
 
 jar.dependsOn += webpack
+
+/* Test React apps using ava */
+
+task ava(type: NodeTask) {
+    script = file('node_modules/ava/cli.js')
+}
