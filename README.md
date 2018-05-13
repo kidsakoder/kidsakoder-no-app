@@ -17,7 +17,7 @@ Just use your terminal and distro of choice.
 [iTerm2](https://www.iterm2.com/) is recommended for Mac, but the default terminal works just as fine for running this project.
 
 ## Windows
-It is recommended to install a unix-like shell for Windows, e.g. [Cygwin](https://cygwin.com/install.html) or [Babun](http://babun.github.io/) (Babun is pre-configured Cygwin with additional packages).
+It is recommended to install a unix-like shell for Windows, e.g. [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) (official from Microsoft), [Cygwin](https://cygwin.com/install.html) or [Babun](http://babun.github.io/) (Babun is pre-configured Cygwin with additional packages).
 
 # Setup
 - Start Docker
