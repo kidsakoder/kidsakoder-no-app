@@ -45,5 +45,9 @@
           <label>Brødtekst</label>
           <occurrences minimum="1" maximum="1"/>
         </input>
+        <input name="hasCommentSection" type="CheckBox">
+          <label>Bruk kommentarfelt</label>
+          <default>checked</default>
+        </input>
     </form>
 </content-type>

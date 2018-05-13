@@ -1,6 +1,6 @@
 .article {
   text-align: left;
-  padding: 64px 16px;
+  padding: 64px 16px 16px 16px;
   color: $main-color;
 }
 
@@ -55,4 +55,9 @@
   a {
     text-decoration: none;
   }
+}
+
+.article-comments {
+  max-width: 640px;
+  margin: 64px auto;
 }
