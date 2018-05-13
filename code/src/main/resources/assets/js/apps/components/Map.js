@@ -37,6 +37,10 @@ export default class MapPortal extends Component {
     }
   }
 
+  /**
+   * Fetch the current position of the user if the user
+   * accepts using its location.
+   */
   getCurrentPosition() {
     window.navigator.geolocation.getCurrentPosition(currPosition => {
       const { latitude, longitude } = currPosition.coords;
