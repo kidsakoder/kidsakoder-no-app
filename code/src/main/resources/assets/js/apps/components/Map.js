@@ -45,6 +45,8 @@ export default class MapPortal extends Component {
         position,
         currPosition: position,
       }));
+
+      this.props.sendCurrentPosition(position);
     });
   }
 
@@ -68,7 +70,7 @@ export default class MapPortal extends Component {
     ));
 
     return (
-      <LeafletMap center={position} zoom={10} style={{
+      <LeafletMap center={position} zoom={11} style={{
         width: '100%',
         height: '320px',
       }}>

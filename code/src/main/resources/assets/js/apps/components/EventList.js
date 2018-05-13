@@ -10,10 +10,17 @@ export default class EventList extends React.Component {
         : [],
       selectedEvent: null,
       mapIsShown: false,
+      currPosition: props.currPosition || [0, 0],
+      sortBy: {
+        key: 'locationParsed',
+        type: 'distance',
+        asc: true,
+      },
     };
 
     this.click = this.click.bind(this);
     this.selectEvent = this.selectEvent.bind(this);
+    this.sendCurrentPosition = this.sendCurrentPosition.bind(this);
     this.mapHasLoadedHandler = this.mapHasLoadedHandler.bind(this);
   }
 
@@ -25,8 +32,44 @@ export default class EventList extends React.Component {
     }
   }
 
+  getSquare(p, q) {
+    const dx = p[0] - q[0];
+    const dy = p[1] - q[1];
+
+    return dx * dx + dy * dy;
+  }
+
+  getDistance(p, q) {
+    return Math.sqrt(this.getSquare(p, q));
+  }
+
   getEvents() {
-    return this.state.events.filter(e => e.published);
+    const {
+      events,
+      sortBy: {
+        key,
+        type,
+        asc,
+      },
+    } = this.state;
+
+    let sort;
+
+    switch (type) {
+    case 'distance':
+      sort = (a, b) => (
+        this.getSquare(a[key], this.state.currPosition)
+        > this.getSquare(b[key], this.state.currPosition)
+      );
+      break;
+    default:
+      sort = (a, b) => a[key] > b[key];
+      break;
+    }
+
+    return events
+      .sort((a, b) => asc ? sort(a, b) : sort(b, a))
+      .filter(e => e.published);
   }
 
   click(event) {
@@ -94,6 +137,12 @@ export default class EventList extends React.Component {
     });
   }
 
+  sendCurrentPosition(currPosition) {
+    this.setState(Object.assign({}, this.state, {
+      currPosition,
+    }))
+  }
+
   render() {
     const events = this.getEvents()
       .map((e, i) => {
@@ -146,6 +195,7 @@ export default class EventList extends React.Component {
           selectedEvent={this.state.selectedEvent}
           selectEvent={this.selectEvent}
           markers={markers}
+          sendCurrentPosition={this.sendCurrentPosition}
         />
       </div>
     );
