@@ -11,8 +11,8 @@ exports.get = () => {
     data: {
       tags,
       caption,
-      bodyStr,
-      imageStr,
+      body: bodyStr,
+      image: imageStr,
       contactInfo,
     },
   } = content;
