@@ -11,9 +11,11 @@
     color: $primary-grey;
     box-shadow: 6px 6px $primary-grey;
     font-size: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding: 0.5rem;
     margin: 5% 0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #4d4d4d;
 }
 
 .btn:hover {
