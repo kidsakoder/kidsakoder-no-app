@@ -4,7 +4,13 @@
     />
   </a>
   <div class="dropdown">
-    <div class="dropdown-toggle-btn">Åpne meny</div>
+    <div class="dropdown-toggle-btn">
+      <svg class="sandwich" width="32" height="32" viewPort="0 0 32 32">
+        <rect x="0" y="5" width="32" height="4" />
+        <rect x="0" y="14" width="32" height="4" />
+        <rect x="0" y="23" width="32" height="4" />
+      </svg>
+    </div>
     <ul class="dropdown-list">
       <li class="item" data-th-each="menuItem : ${menuItems}">
         <a
@@ -20,17 +26,24 @@
   <script>
     (function() {
       var button = document.querySelector('.dropdown-toggle-btn');
+      var openSvg = button.innerHTML;
+      var closeSvg = `
+        <svg class="cross" width="32" height="32" viewPort="0 0 32 32">
+            <line x1="5" y1="5" x2="27" y2="27" />
+            <line x1="5" y1="27" x2="27" y2="5" />
+        </svg>
+      `;
       var dropdownMenu = document.querySelector('.dropdown-list');
       var menuIsOpen = false;
 
       function close() {
-          button.innerHTML = 'Åpne meny'; // Some svg icon
+          button.innerHTML = openSvg;
           dropdownMenu.setAttribute('class', 'dropdown-list');
           setTimeout(function() { menuIsOpen = false; }, 10);
       }
 
       function open() {
-          button.innerHTML = 'Lukk meny'; // Some svg icon
+          button.innerHTML = closeSvg;
           dropdownMenu.setAttribute('class', 'dropdown-list open');
           setTimeout(function() { menuIsOpen = true; }, 10);
       }

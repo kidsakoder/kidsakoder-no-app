@@ -17,9 +17,29 @@
         cursor: pointer;
         color: #ddd;
         transition: color .2s ease-in-out;
+        width: 32px;
 
         &:hover {
             color: $primary-white;
+
+            .sandwich {
+                fill: $primary-white;
+            }
+
+            .cross {
+                stroke: $primary-white;
+            }
+        }
+
+        .sandwich {
+            fill: #ddd;
+            fill: color .2s ease-in-out;
+        }
+
+        .cross {
+            stroke: #ddd;
+            stroke-width: 4;
+            stroke: color .2s ease-in-out;
         }
     }
 
@@ -32,7 +52,7 @@
         max-height: 0;
         overflow: hidden;
         border-radius: 5px;
-        margin: 0;
+        margin-top: 8px;
         
         &.open {
             max-height: 200px;
