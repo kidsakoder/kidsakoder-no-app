@@ -3,14 +3,19 @@ import { createPortal } from 'react-dom';
 import Map from './Map';
 
 export default class MapPortal extends Component {
-  constructor() {
+  constructor(props) {
     super();
 
     this.state = {
       mapElement: document.querySelector('.map'),
     };
 
-    this.hasLoaded = !!this.state.mapElement;
+    this.hasLoaded = false;
+
+    if (this.state.mapElement) {
+      props.hasLoaded();
+      this.hasLoaded = true;
+    }
   }
 
   componentDidMount() {
