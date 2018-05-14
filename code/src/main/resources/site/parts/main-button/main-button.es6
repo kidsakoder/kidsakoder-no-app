@@ -22,19 +22,11 @@ exports.get = () => {
       btnUrl = config.url.text.url;
     }
   }
- 
-  const image = portal.imageUrl({
-    id: component.config.image,
-    scale: 'block(250, 250)',
-  });
+
  
   const model = {
     title: component.config.title,
     url: btnUrl,
-    bgimage: portal.processHtml({
-      value: `<div style="background-image: url(${image})"></div>`,
-    }),
-    alt: component.config.alt,
   };
  
   const body = thymeleaf.render(views.buttonItem, model);

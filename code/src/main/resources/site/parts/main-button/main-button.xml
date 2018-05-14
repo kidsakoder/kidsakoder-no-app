@@ -1,8 +1,6 @@
 <part>
-  <display-name>main-button</display-name>
+  <display-name>Store knapper</display-name>
   <config>
- 
-      <inline mixin="images"/>
  
       <input type="TextLine" name="title">
         <label>Title</label>
