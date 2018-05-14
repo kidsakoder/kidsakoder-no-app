@@ -2,7 +2,6 @@
 @import 'base/_normalize.scss';
 @import 'base/_imports.scss';
 @import 'base/_media.scss';
-@import 'base/_button.scss';
 
 // Specific themes and colors
 @import 'themes/_theme.scss';
@@ -16,5 +15,5 @@
 @import 'layouts/_inner-wrapper.scss';
 
 // Components
-@import 'components/_nav-button.scss';
 @import 'components/_events.scss';
+@import 'components/_button.scss';
