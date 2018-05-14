@@ -11,6 +11,8 @@
 
     .dropdown {
         position: relative;
+        margin: 0 .5rem;
+        flex: 1 0 auto;
     }
 
     .dropdown-toggle-btn {
@@ -18,6 +20,7 @@
         color: #ddd;
         transition: color .2s ease-in-out;
         width: 32px;
+        margin: 0 8px 0 auto;
 
         &:hover {
             color: $primary-white;
@@ -46,6 +49,7 @@
     .dropdown-list {
         position: absolute;
         top: 100%;
+        right: 0;
         background-color: $dropdown-menu-color;
         list-style: none;
         padding-left: 0;
@@ -53,7 +57,7 @@
         overflow: hidden;
         border-radius: 5px;
         margin-top: 8px;
-        
+
         &.open {
             max-height: 500px;
             transition: max-height .5s ease-in-out;

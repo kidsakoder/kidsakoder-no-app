@@ -3,26 +3,41 @@
     <img data-th-src="${portal.assetUrl({'_path=images/lkk-logo/lkk-logo-url-negativ-sorthvit.svg'})}" alt="Lær Kidsa Koding"
     />
   </a>
-  <div class="dropdown">
-    <div class="dropdown-toggle-btn">
-      <svg class="sandwich" width="32" height="32" viewPort="0 0 32 32">
-        <rect x="0" y="5" width="32" height="4" />
-        <rect x="0" y="14" width="32" height="4" />
-        <rect x="0" y="23" width="32" height="4" />
-      </svg>
-    </div>
-    <ul class="dropdown-list">
-      <li class="item" data-th-each="menuItem : ${menuItems}">
-        <a
-          class="link"
-          data-th-classappend="${menuItem.path == currentPath ? 'active' : ''}"
-          data-th-href="${portal.pageUrl({'_path=' + menuItem.path})}"
-          data-th-text="${menuItem.menuName} ?: ${menuItem.displayName}">
-          Sidetittel
-        </a>
-      </li>
-    </ul>
+</div>
+<div class="col-xs-8 col-sm-3 col-lg-2">
+    <a class="btn-link">
+        <div class="btn">koding i skolen</div>
+    </a>
+</div>
+<div class="col-xs-8 col-sm-3 col-lg-2">
+    <a class="btn-link">
+        <div class="btn">jeg vil kode nå</div>
+    </a>
+</div>
+<div class="col-xs-8 col-sm-3 col-lg-2">
+    <a class="btn-link">
+        <div class="btn">kodeklubber</div>
+    </a>
+</div>
+<div class="dropdown">
+  <div class="dropdown-toggle-btn">
+    <svg class="sandwich" width="32" height="32" viewPort="0 0 32 32">
+      <rect x="0" y="5" width="32" height="4" />
+      <rect x="0" y="14" width="32" height="4" />
+      <rect x="0" y="23" width="32" height="4" />
+    </svg>
   </div>
+  <ul class="dropdown-list">
+    <li class="item" data-th-each="menuItem : ${menuItems}">
+      <a
+        class="link"
+        data-th-classappend="${menuItem.path == currentPath ? 'active' : ''}"
+        data-th-href="${portal.pageUrl({'_path=' + menuItem.path})}"
+        data-th-text="${menuItem.menuName} ?: ${menuItem.displayName}">
+        Sidetittel
+      </a>
+    </li>
+  </ul>
   <script>
     (function() {
       var button = document.querySelector('.dropdown-toggle-btn');
@@ -63,19 +78,4 @@
       });
     }());
   </script>
-</div>
-<div class="col-xs-8 col-sm-3 col-lg-2">
-    <a class="btn-link">
-        <div class="btn">koding i skolen</div>
-    </a>
-</div>
-<div class="col-xs-8 col-sm-3 col-lg-2">
-    <a class="btn-link">
-        <div class="btn">jeg vil kode nå</div>
-    </a>
-</div>
-<div class="col-xs-8 col-sm-3 col-lg-2">
-    <a class="btn-link">
-        <div class="btn">kodeklubber</div>
-    </a>
 </div>
