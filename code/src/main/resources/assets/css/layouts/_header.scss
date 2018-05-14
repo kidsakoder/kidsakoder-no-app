@@ -55,8 +55,8 @@
         margin-top: 8px;
         
         &.open {
-            max-height: 200px;
-            transition: max-height .2s ease-in-out;
+            max-height: 500px;
+            transition: max-height .5s ease-in-out;
         }
 
         .item {
