@@ -1,5 +1,5 @@
 <content-type>
-    <display-name>Events</display-name>
+    <display-name>Arrangement</display-name>
     <super-type>base:structured</super-type>
     <form>
         <!-- This may be used in the furture when implementing multiple Code Club support.
