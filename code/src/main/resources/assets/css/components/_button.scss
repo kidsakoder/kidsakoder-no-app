@@ -1,0 +1,29 @@
+.btn-link {
+    text-decoration: none;
+}
+
+.btn {
+    width: 100%;
+    font-family: $font-monospace;
+    text-align: center;
+    border-radius: 12pt;
+    background-color: $background-color;
+    color: $primary-grey;
+    box-shadow: 6px 6px $primary-grey;
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin: 5% 0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #4d4d4d;
+}
+
+.btn:hover {
+    box-shadow: 0 0;
+}
+
+.btn:active {
+    box-shadow: 0 0;
+    color: nth($greens, 4);
+    background-color: $primary-grey;
+}
