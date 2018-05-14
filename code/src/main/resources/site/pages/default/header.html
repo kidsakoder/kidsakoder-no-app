@@ -3,10 +3,51 @@
     <img data-th-src="${portal.assetUrl({'_path=images/lkk-logo/lkk-logo-url-negativ-sorthvit.svg'})}" alt="Lær Kidsa Koding"
     />
   </a>
-  <ul class="list">
-    <li class="item" data-th-each="menuItem : ${menuItems}">
-      <a class="link" data-th-classappend="${menuItem.path == currentPath ? 'active' : ''}" data-th-href="${portal.pageUrl({'_path=' + menuItem.path})}"
-        data-th-text="${menuItem.menuName} ?: ${menuItem.displayName}">Sidetittel</a>
-    </li>
-  </ul>
+  <div class="dropdown">
+    <div class="dropdown-toggle-btn">Åpne meny</div>
+    <ul class="dropdown-list">
+      <li class="item" data-th-each="menuItem : ${menuItems}">
+        <a
+          class="link"
+          data-th-classappend="${menuItem.path == currentPath ? 'active' : ''}"
+          data-th-href="${portal.pageUrl({'_path=' + menuItem.path})}"
+          data-th-text="${menuItem.menuName} ?: ${menuItem.displayName}">
+          Sidetittel
+        </a>
+      </li>
+    </ul>
+  </div>
+  <script>
+    (function() {
+      var button = document.querySelector('.dropdown-toggle-btn');
+      var dropdownMenu = document.querySelector('.dropdown-list');
+      var menuIsOpen = false;
+
+      function close() {
+          button.innerHTML = 'Åpne meny'; // Some svg icon
+          dropdownMenu.setAttribute('class', 'dropdown-list');
+          setTimeout(function() { menuIsOpen = false; }, 10);
+      }
+
+      function open() {
+          button.innerHTML = 'Lukk meny'; // Some svg icon
+          dropdownMenu.setAttribute('class', 'dropdown-list open');
+          setTimeout(function() { menuIsOpen = true; }, 10);
+      }
+
+      button.addEventListener('click', function() {
+        if (menuIsOpen) {
+          close();
+        } else {
+          open();
+        }
+      });
+
+      window.addEventListener('click', function() {
+        if (menuIsOpen) {
+          close();
+        }
+      });
+    }());
+  </script>
 </div>

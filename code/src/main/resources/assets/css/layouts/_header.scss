@@ -8,4 +8,51 @@
         background-size: cover;
         background-position: center center;
     }
+
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-toggle-btn {
+        cursor: pointer;
+        color: #ddd;
+        transition: color .2s ease-in-out;
+
+        &:hover {
+            color: $primary-white;
+        }
+    }
+
+    .dropdown-list {
+        position: absolute;
+        top: 100%;
+        background-color: $dropdown-menu-color;
+        list-style: none;
+        padding-left: 0;
+        max-height: 0;
+        overflow: hidden;
+        border-radius: 5px;
+        margin: 0;
+        
+        &.open {
+            max-height: 200px;
+            transition: max-height .2s ease-in-out;
+        }
+
+        .item {
+            padding: 6px;
+            margin: 8px;
+
+            .link {
+                color: $primary-white;
+                text-decoration: none;
+                display: inline-block;
+                width: 100%;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
 }
