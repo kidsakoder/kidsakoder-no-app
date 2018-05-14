@@ -6,3 +6,24 @@
 .react-app:empty:after {
     content: 'Din nettleser må aktivere JavaScript for å kjøre denne applikasjonen...';
 }
+
+.event-item {
+    padding: 8px;
+
+    &.selected {
+        background-color: $selected-from-map-color;
+
+        .event-tag {
+            background-color: $primary-green;
+            color: $primary-white;
+        }
+    }
+
+    .event-tag {
+        font-size: .8em;
+        padding: 3px 6px;
+        margin: 3px;
+        background-color: $primary-lightgrey;
+        border-radius: 3px;
+    }
+}
