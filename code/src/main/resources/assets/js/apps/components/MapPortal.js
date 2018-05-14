@@ -7,55 +7,62 @@ export default class MapPortal extends Component {
     super();
 
     this.state = {
-      mapElement: document.querySelector('.map'),
+      mapElements: document.querySelectorAll('.map'),
     };
 
     this.hasLoaded = false;
 
-    if (this.state.mapElement) {
+    if (this.state.mapElements) {
       props.hasLoaded();
       this.hasLoaded = true;
     }
   }
 
   componentDidMount() {
-    if (!this.hasLoaded) {
-      let timeout;
-      const interval = setInterval(() => {
-        if (document.querySelector('.map')) {
-          clearInterval(interval);
-          clearTimeout(timeout);
-          this.hasLoaded = true;
-          this.props.hasLoaded();
-        }
-      }, 100);
-
-      timeout = setTimeout(() => {
+    let timeout;
+    const interval = setInterval(() => {
+      if (document.querySelector('.map')) {
         clearInterval(interval);
-      }, 1000);
-    }
+        clearTimeout(timeout);
+        this.hasLoaded = true;
+        this.props.hasLoaded();
+        this.setState(Object.assign({}, this.state, {
+          mapElements: document.querySelectorAll('.map'),
+        }));
+      }
+    }, 100);
+
+    timeout = setTimeout(() => {
+      clearInterval(interval);
+    }, 1000);
   }
 
   render() {
-    const mapElement = this.state.mapElement || document.querySelector('.map');
+    const mapElements = this.state.mapElements
+      || document.querySelectorAll('.map');
 
-    if (mapElement) {
+    if (mapElements.length) {
       let selectedPosition = null;
       if (this.props.selectedEvent && 'coord' in this.props.selectedEvent) {
         selectedPosition = this.props.selectedEvent.coord;
       }
 
-      return createPortal((
-        <Fragment>
-          <h2>Kart</h2>
-          <Map
-            markers={this.props.markers}
-            position={selectedPosition}
-            selectEvent={this.props.selectEvent}
-            sendCurrentPosition={this.props.sendCurrentPosition}
-          />
-        </Fragment>
-      ), mapElement);
+      const maps = [];
+      mapElements.forEach(map => {
+        maps.push(createPortal((
+          <Fragment>
+            <h2>Kart</h2>
+            <Map
+              markers={this.props.markers}
+              position={selectedPosition}
+              selectEvent={this.props.selectEvent}
+              sendCurrentPosition={this.props.sendCurrentPosition}
+            />
+          </Fragment>
+        ), map));
+      });
+
+      return maps;
     }
 
     return null;
