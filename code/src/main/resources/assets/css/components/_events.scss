@@ -5,6 +5,18 @@
 
 .react-app:empty:after {
     content: 'Din nettleser må aktivere JavaScript for å kjøre denne applikasjonen...';
+    animation: 1s appear;
+    animation-fill-mode: forwards;
+    visibility: hidden;
+}
+
+@keyframes appear {
+    99% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
 }
 
 .event-item {
