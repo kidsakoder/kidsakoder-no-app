@@ -8,9 +8,10 @@ class Events extends Component {
   constructor() {
     super();
 
+    const rootUrl = `${document.currentScript.getAttribute('root') || ''}/`;
     this.state = {
       events: [],
-      rootUrl: document.currentScript.getAttribute('root') || '/',
+      rootUrl: rootUrl.replace(/\/\/$/, '/'),
     };
   }
 

@@ -188,7 +188,7 @@ export default class EventList extends React.Component {
       return Object.assign({}, dataParsed, {
         displayName: e.displayName,
         id: e._id,
-        path: e._path.replace(/^\/kidsakoder/, ''),
+        path: e._path.replace(/^\/kidsakoder\//, ''),
         locationParsed: this.parseCoordinates(dataParsed.location),
         published,
         date: (e.publish || {}).from || null,

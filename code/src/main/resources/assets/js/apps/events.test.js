@@ -71,7 +71,7 @@ test('has correct URL path', t => {
   const wrapper = shallow(
     <EventList events={events} today={new Date(2018, 5, 10)} />
   );
-  t.deepEqual(wrapper.instance().getEvents()[1].path, '/events/zzzzzz');
+  t.deepEqual(wrapper.instance().getEvents()[1].path, 'events/zzzzzz');
 });
 
 test('parsing coordinates 10,10 correctly', t => {
