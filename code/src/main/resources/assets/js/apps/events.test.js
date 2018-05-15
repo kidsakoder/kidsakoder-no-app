@@ -11,13 +11,13 @@ const events = [
   {
     'displayName': 'xxxx',
     'dataAsJson': '{"caption":"xxx","body":"<p>yyy</p>"}',
-    '_path': '/site/events/xxxx',
+    '_path': '/kidsakoder/events/xxxx',
     'publish': {},
   },
   {
     'displayName': 'yyyy',
     'dataAsJson': '{"caption":"xxxx","body":"<p>xxxx</p>"}',
-    '_path': '/site/events/yyyy',
+    '_path': '/kidsakoder/events/yyyy',
     'publish': {
       'from': '2018-05-09T12:45:57.352Z',
       'first': '2018-05-09T12:45:57.352Z',
@@ -26,13 +26,13 @@ const events = [
   {
     'displayName': 'zzzz',
     'dataAsJson': '{"tags":["xyxy","2019"],"caption":"xx","body":"<p>xx</p>"}',
-    '_path': '/site/events/zzzz',
+    '_path': '/kidsakoder/events/zzzz',
     'publish': {},
   },
   {
     'displayName': 'zzzzzz',
     'dataAsJson': '{"tags":["xyxy","2018"],"caption":"xx","body":"<p>xx</p>"}',
-    '_path': '/site/events/zzzzzz',
+    '_path': '/kidsakoder/events/zzzzzz',
     'publish': {
       'from': '2018-05-09T22:00:00Z',
       'to': '2018-08-10T22:00:00Z',
@@ -71,7 +71,7 @@ test('has correct URL path', t => {
   const wrapper = shallow(
     <EventList events={events} today={new Date(2018, 5, 10)} />
   );
-  t.deepEqual(wrapper.instance().getEvents()[1].path, '/site/events/zzzzzz');
+  t.deepEqual(wrapper.instance().getEvents()[1].path, '/events/zzzzzz');
 });
 
 test('parsing coordinates 10,10 correctly', t => {

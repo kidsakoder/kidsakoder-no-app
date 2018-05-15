@@ -188,7 +188,7 @@ export default class EventList extends React.Component {
       return Object.assign({}, dataParsed, {
         displayName: e.displayName,
         id: e._id,
-        path: e._path,
+        path: e._path.replace(/^\/kidsakoder/, ''),
         locationParsed: this.parseCoordinates(dataParsed.location),
         published,
         date: (e.publish || {}).from || null,
@@ -214,7 +214,7 @@ export default class EventList extends React.Component {
    */
   parseCoordinates(coords) {
     const [ lat = '0', lng = '0' ] = (coords || '0,0').split(',');
-    return [ parseFloat(lat), parseFloat(lng) ]
+    return [ parseFloat(lat), parseFloat(lng) ];
   }
 
   /**
