@@ -214,7 +214,7 @@ export default class EventList extends React.Component {
    */
   parseCoordinates(coords) {
     const [ lat = '0', lng = '0' ] = (coords || '0,0').split(',');
-    return [ parseFloat(lat), parseFloat(lng) ]
+    return [ parseFloat(lat), parseFloat(lng) ];
   }
 
   /**
